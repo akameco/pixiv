@@ -1,0 +1,45 @@
+{
+  "name": "pixiv.js",
+  "version": "0.0.1",
+  "description": "awsome pixiv api client",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "engins": {
+    "node": ">=4"
+  },
+  "author": "akameco <akameco.t@gmail.com>",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akameco/pixiv.js.git"
+  },
+  "keywords": [
+    "pixiv",
+    "image",
+    "client",
+    "illust"
+  ],
+  "bugs": {
+    "url": "https://github.com/akameco/pixiv.js/issues"
+  },
+  "homepage": "https://github.com/akameco/pixiv.js#readme",
+  "dependencies": {
+    "got": "^6.2.0",
+    "query-string": "^4.1.0"
+  },
+  "devDependencies": {
+    "ava": "^0.13.0",
+    "xo": "^0.13.0"
+  },
+  "xo": {
+    "esnext": true
+  }
+}
