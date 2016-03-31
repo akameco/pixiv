@@ -10,22 +10,19 @@ class Pixiv {
 		this.password = password;
 	}
 
-	auth(username, password) {
-		username = username || this.username;
-		password = password || this.password;
-
-		const body = {
-			client_id: "bYGKuGVw91e0NMfPGp44euvGt59s",  // eslint-disable-line
-			client_secret: "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK", // eslint-disable-line
-			grant_type: "password", // eslint-disable-line
-			username,
-			password
-		};
-
+	auth() {
 		return new Promise(resolve => {
 			if (this.headers && this.headers.Authorization) {
 				resolve(this.headers);
 			}
+
+			const body = {
+				client_id: "bYGKuGVw91e0NMfPGp44euvGt59s",  // eslint-disable-line
+				client_secret: "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK", // eslint-disable-line
+				grant_type: "password", // eslint-disable-line
+				username: this.username,
+				password: this.password
+			};
 
 			got('https://oauth.secure.pixiv.net/auth/token', {body, json: true}).then(res => {
 				const token = res.body.response.access_token;
