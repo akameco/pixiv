@@ -16,7 +16,7 @@ test('work', async t => {
 test('error pixiv.work has empty arguments', async t => {
 	const pixiv = new Pixiv(username, password);
 	try {
-		await pixiv.user();
+		await pixiv.work();
 		t.fail('Exception is not thrown');
 	} catch (err) {
 		t.ok(err);
@@ -45,10 +45,32 @@ test('userWorks', async t => {
 	t.true(typeof json === 'object');
 });
 
-test('error pixiv.user has empty arguments', async t => {
+test('error pixiv.userWorks has empty arguments', async t => {
 	const pixiv = new Pixiv(username, password);
 	try {
-		await pixiv.user();
+		await pixiv.userWorks();
+		t.fail('Exception is not thrown');
+	} catch (err) {
+		t.ok(err);
+	}
+});
+
+test('search by 艦これ', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.search('艦これ');
+	t.true(Array.isArray(json));
+});
+
+test('search by 艦これ with tag', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.search('艦これ', {mode: 'tag'});
+	t.true(Array.isArray(json));
+});
+
+test('error pixiv.search has empty arguments', async t => {
+	const pixiv = new Pixiv(username, password);
+	try {
+		await pixiv.search();
 		t.fail('Exception is not thrown');
 	} catch (err) {
 		t.ok(err);
