@@ -112,6 +112,23 @@ class Pixiv {
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/search/works`, {query});
 	}
 
+	// type: [all, illust, manga, ugoira]
+	ranking(type, opts) {
+		opts = opts || {};
+		opts.mode = 'daily';
+
+		type = type || 'all';
+
+		const query = {
+			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
+			mode: opts.mode,
+			page: 1,
+			per_page: 100 // eslint-disable-line camelcase
+		};
+
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/ranking/${type}`, {query});
+	}
+
 	download(target, opts) {
 		opts = opts || {};
 

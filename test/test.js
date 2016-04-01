@@ -76,3 +76,17 @@ test('error pixiv.search has empty arguments', async t => {
 		t.ok(err);
 	}
 });
+
+test('ranking', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.ranking();
+	t.same(json.mode, 'daily');
+	t.true(Array.isArray(json.works));
+});
+
+test('ranking type illust', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.ranking('illust');
+	t.same(json.content, 'illust');
+	t.true(Array.isArray(json.works));
+});
