@@ -13,7 +13,7 @@ class Pixiv {
 	auth() {
 		return new Promise(resolve => {
 			if (this.headers && this.headers.Authorization) {
-				resolve(this.headers);
+				resolve();
 			}
 
 			const body = {
@@ -29,7 +29,7 @@ class Pixiv {
 				this.headers = {
 					Authorization: `Bearer ${token}`
 				};
-				resolve(this.headers);
+				resolve();
 			});
 		});
 	}
