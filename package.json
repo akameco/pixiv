@@ -15,7 +15,8 @@
   "author": "akameco <akameco.t@gmail.com>",
   "license": "MIT",
   "directories": {
-    "example": "example"
+    "example": "example",
+    "test": "test"
   },
   "repository": {
     "type": "git",

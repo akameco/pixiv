@@ -37,3 +37,4 @@ node_modules
 example/
 example/media
 config.json
+.envrc
