@@ -41,6 +41,8 @@ your pixiv password.
 
 ### pixiv.download(url, [options])
 
+Download image file from pixiv.
+
 #### url
 
 *Required*  
