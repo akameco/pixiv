@@ -132,12 +132,17 @@ class Pixiv {
 	download(target, opts) {
 		opts = opts || {};
 
-		if (/^http/.test(target)) {
-			const parsed = queryString.parse(target);
-			target = parsed.illust_id;
-		}
-
 		return new Promise(resolve => {
+			// saveImage when image url
+			if (/(jpg|png|gif)$/.test(target)) {
+				saveImage(target, opts).then(resolve);
+			}
+
+			if (/illust_id/.test(target)) {
+				const parsed = queryString.parse(target);
+				target = parsed.illust_id;
+			}
+
 			this.work(target)
 				.then(json => json.image_urls.large)
 				.then(url => saveImage(url, opts))
@@ -146,9 +151,11 @@ class Pixiv {
 	}
 }
 
-function saveImage(url, opts) {
+function saveImage(imgUrl, opts) {
+	opts = opts || {};
+
 	const directory = opts.directory || '';
-	let filename = opts.filename || path.basename(url);
+	let filename = opts.filename || path.basename(imgUrl);
 	filename = path.join(directory, filename);
 
 	return new Promise(resolve => {
@@ -159,10 +166,11 @@ function saveImage(url, opts) {
 			}
 		};
 
-		got.stream(url, options).pipe(fs.createWriteStream(filename)).on('close', () => {
+		got.stream(imgUrl, options).pipe(fs.createWriteStream(filename)).on('close', () => {
 			resolve(filename);
 		});
 	});
 }
 
+module.exports.saveImage = Pixiv.prototype.saveImage = saveImage;
 module.exports = Pixiv;
