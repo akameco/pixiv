@@ -126,6 +126,19 @@ Default: `text`
 
 `text`, `tag`, `exact_tag`, `caption`
 
+## Tests
+
+export your pixiv username & password before Test.
+
+```
+export USERNAME=your pixiv username...
+export PASSWORD=your pixiv password...
+```
+
+```
+$ npm test
+```
+
 ## License
 
 MIT
