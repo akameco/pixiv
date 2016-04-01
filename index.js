@@ -94,9 +94,12 @@ class Pixiv {
 			q,
 			page: 1,
 			per_page: 100, // eslint-disable-line camelcase
+			// order: desc, asc
 			order: 'desc',
 			sort: 'date',
+			// period: all, day, week, month
 			period: 'all',
+			// mode: text, tag, exact_tag, caption
 			mode: 'text',
 			types: ['illustration', 'manga', 'ugoira'].join(','),
 			include_stats: true, // eslint-disable-line camelcase
