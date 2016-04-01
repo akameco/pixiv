@@ -126,6 +126,27 @@ Default: `text`
 
 `text`, `tag`, `exact_tag`, `caption`
 
+### pixiv.ranking(type, [options])
+
+Get ranking data.
+
+### type
+
+Type: `string`
+Default: `all`
+
+`all`, `illust`, `manga`, `ugoira`
+
+
+### options
+
+#### mode
+
+Type: `string`
+Default: `daily`
+
+`daily`, `weekly`, `monthly`, `rookie`, `original`, `male`, `female`, `daily_r18`, `weekly_r18`, `male_r18`, `female_r18`, `r18g`
+
 ## Tests
 
 Export your pixiv username & password before running Tests.
