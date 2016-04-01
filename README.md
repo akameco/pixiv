@@ -128,7 +128,7 @@ Default: `text`
 
 ## Tests
 
-export your pixiv username & password before Test.
+Export your pixiv username & password before running Tests.
 
 ```
 export USERNAME=your pixiv username...
