@@ -1,6 +1,6 @@
 # pixiv.js [![Build Status](https://travis-ci.org/akameco/pixiv.js.svg?branch=master)](https://travis-ci.org/akameco/pixiv.js)
 
-> awsome pixiv api client
+> pixiv API client
 
 ## Installation
 
