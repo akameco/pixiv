@@ -1,6 +1,6 @@
 {
   "name": "pixiv.js",
-  "version": "0.3.0",
+  "version": "0.4.0-0",
   "description": "awsome pixiv api client",
   "main": "index.js",
   "files": [
