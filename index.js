@@ -18,9 +18,9 @@ class Pixiv {
 			}
 
 			const body = {
-				client_id: "bYGKuGVw91e0NMfPGp44euvGt59s",  // eslint-disable-line
-				client_secret: "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK", // eslint-disable-line
-				grant_type: "password", // eslint-disable-line
+				client_id: "bYGKuGVw91e0NMfPGp44euvGt59s",  // eslint-disable-line camelcase
+				client_secret: "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK", // eslint-disable-line camelcase
+				grant_type: "password", // eslint-disable-line camelcase
 				username: this.username,
 				password: this.password
 			};
@@ -63,7 +63,7 @@ class Pixiv {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
 
-		const query = {image_sizes: 'large'}; // eslint-disable-line
+		const query = {image_sizes: 'large'}; // eslint-disable-line camelcase
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/works/${id}`, {query});
 	}
 
