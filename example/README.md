@@ -1,0 +1,5 @@
+# examples
+
+```
+$ npm install
+```
