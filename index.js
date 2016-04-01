@@ -83,6 +83,32 @@ class Pixiv {
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}/works`);
 	}
 
+	search(q, opts) {
+		if (!q) {
+			return Promise.reject(new Error('Search words is required.'));
+		}
+
+		opts = opts || {};
+
+		const defaultOpts = {
+			q,
+			page: 1,
+			per_page: 100, // eslint-disable-line camelcase
+			order: 'desc',
+			sort: 'date',
+			period: 'all',
+			mode: 'text',
+			types: ['illustration', 'manga', 'ugoira'].join(','),
+			include_stats: true, // eslint-disable-line camelcase
+			include_sanity_level: true, // eslint-disable-line camelcase
+			image_sizes: ['px_128x128', 'px_480mw', 'large'].join(',') // eslint-disable-line camelcase
+		};
+
+		const query = objectAssign(defaultOpts, opts);
+
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/search/works`, {query});
+	}
+
 	download(target, opts) {
 		opts = opts || {};
 
