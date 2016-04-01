@@ -114,8 +114,7 @@ class Pixiv {
 
 	// type: [all, illust, manga, ugoira]
 	ranking(type, opts) {
-		opts = opts || {};
-		opts.mode = 'daily';
+		opts = opts || {mode: 'daily'};
 
 		type = type || 'all';
 
