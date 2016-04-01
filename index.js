@@ -93,7 +93,6 @@ class Pixiv {
 
 		return new Promise(resolve => {
 			this.work(target)
-				.then(res => res[0])
 				.then(json => json.image_urls.large)
 				.then(url => saveImage(url, opts))
 				.then(resolve);
