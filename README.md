@@ -83,12 +83,16 @@ Default is current directory.
 
 Get user info json.
 
+#### userId
+
 *Required*  
 Type: `string`, `number`
 
 ### pixiv.work(illustId)
 
 Get illust info json.
+
+#### illustId
 
 *Required*  
 Type: `string`, `number`
@@ -97,9 +101,30 @@ Type: `string`, `number`
 
 Get user works.
 
+### userId
+
 *Required*  
 Type: `string`, `number`
 
+### pixiv.search(query, [options])
+
+search pixiv
+
+#### query
+
+query word
+
+*Required*  
+Type: `string`
+
+#### options
+
+##### mode
+
+Type: `string`
+Default: `text`
+
+`text`, `tag`, `exact_tag`, `caption`
 
 ## License
 
