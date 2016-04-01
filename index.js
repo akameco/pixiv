@@ -123,10 +123,43 @@ class Pixiv {
 			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
 			mode: opts.mode,
 			page: 1,
-			per_page: 100 // eslint-disable-line camelcase
+			per_page: 100, // eslint-disable-line camelcase
+			image_sizes: ['small', 'px_128x128', 'px_480mw', 'large'].join(',') // eslint-disable-line camelcase
 		};
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/ranking/${type}`, {query});
+	}
+
+	feed(r18) {
+		const bool2num = b => b ? 1 : 0;
+
+		const query = {
+			relation: 'all',
+			type: 'touch_nottext',
+			show_r18: bool2num(r18) || 1 // eslint-disable-line camelcase
+		};
+
+		return this.authGot('https://public-api.secure.pixiv.net/v1/me/feeds.json', {query});
+	}
+
+	favorite() {
+		const image_sizes = ['large', 'small', 'px_128x128', 'px_480mw'].join(','); // eslint-disable-line camelcase
+		const query = {
+			image_sizes // eslint-disable-line camelcase
+		};
+
+		return this.authGot('https://public-api.secure.pixiv.net/v1/me/favorite_works', {query});
+	}
+
+	userFollowing(id, opts) {
+		const defaultOpts = {
+			page: 1,
+			per_page: 30 // eslint-disable-line camelcase
+		};
+
+		const query = objectAssign({}, defaultOpts, opts);
+
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}/following.json`, {query});
 	}
 
 	download(target, opts) {

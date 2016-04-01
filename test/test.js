@@ -90,3 +90,21 @@ test('ranking type illust', async t => {
 	t.same(json.content, 'illust');
 	t.true(Array.isArray(json.works));
 });
+
+test('feed', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.feed();
+	t.true(Array.isArray(json));
+});
+
+test('favorite', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.favorite();
+	t.true(Array.isArray(json));
+});
+
+test('userFollowing', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.favorite();
+	t.true(Array.isArray(json));
+});
