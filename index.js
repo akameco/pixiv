@@ -67,9 +67,9 @@ class Pixiv {
 }
 
 function saveImage(url, opts) {
-	const dirname = opts.dirname || '';
+	const directory = opts.directory || '';
 	let filename = opts.filename || path.basename(url);
-	filename = path.join(dirname, filename);
+	filename = path.join(directory, filename);
 
 	return new Promise(resolve => {
 		const options = {
