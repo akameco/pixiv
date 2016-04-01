@@ -33,6 +33,7 @@
   "homepage": "https://github.com/akameco/pixiv.js#readme",
   "dependencies": {
     "got": "^6.2.0",
+    "object-assign": "^4.0.1",
     "query-string": "^4.1.0"
   },
   "devDependencies": {

@@ -27,14 +27,14 @@ pixiv.download(url).then(filename => {
 
 #### username
 
-*Required*  
+*Required*
 Type: `string`
 
 your pixiv username.
 
 #### password
 
-*Required*  
+*Required*
 Type: `string`
 
 your pixiv password.
@@ -45,7 +45,7 @@ Download image file from pixiv.
 
 #### url
 
-*Required*  
+*Required*
 Type: `string`, `number`
 
 url or illust_id.
@@ -78,6 +78,27 @@ Type: `string`
 
 Set the download directory.
 Default is current directory.
+
+### pixiv.user(userId)
+
+Get user info json.
+
+*Required*
+Type: `string`, `number`
+
+### pixiv.work(illustId)
+
+Get illust info json.
+
+*Required*
+Type: `string`, `number`
+
+### pixiv.userWorks(userId)
+
+Get user works.
+
+*Required*
+Type: `string`, `number`
 
 
 ## License

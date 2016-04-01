@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const got = require('got');
 const queryString = require('query-string');
+const objectAssign = require('object-assign');
 
 class Pixiv {
 	constructor(username, password) {
@@ -10,7 +11,7 @@ class Pixiv {
 		this.password = password;
 	}
 
-	auth() {
+	_auth() {
 		return new Promise(resolve => {
 			if (this.headers && this.headers.Authorization) {
 				resolve();
@@ -34,31 +35,65 @@ class Pixiv {
 		});
 	}
 
-	fetchInfo(id) {
-		if (/^http/.test(id)) {
-			const parsed = queryString.parse(id);
-			id = parsed.illust_id;
-		}
+	authGot(url, opts) {
+		opts = opts || {};
 
 		return new Promise(resolve => {
-			const query = {image_sizes: 'large'}; // eslint-disable-line
-			const options = {
-				headers: this.headers,
-				json: true,
-				query
-			};
+			this._auth().then(() => {
+				const defaultOpts = {
+					headers: this.headers,
+					json: true
+				};
 
-			got(`https://public-api.secure.pixiv.net/v1/works/${id}`, options).then(res => {
-				resolve(res.body.response[0]);
+				opts = objectAssign(opts, defaultOpts);
+
+				got(url, opts).then(res => {
+					if (res.body.response.length === 1) {
+						resolve(res.body.response[0]);
+					} else {
+						resolve(res.body.response);
+					}
+				});
 			});
 		});
 	}
 
-	download(id, opts) {
+	work(id) {
+		if (!id) {
+			return Promise.reject(new Error('Illust Id is required.'));
+		}
+
+		const query = {image_sizes: 'large'}; // eslint-disable-line
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/works/${id}`, {query});
+	}
+
+	user(id) {
+		if (!id) {
+			return Promise.reject(new Error('UserId is required.'));
+		}
+
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}`);
+	}
+
+	userWorks(id) {
+		if (!id) {
+			return Promise.reject(new Error('UserId is required.'));
+		}
+
+		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}/works`);
+	}
+
+	download(target, opts) {
 		opts = opts || {};
+
+		if (/^http/.test(target)) {
+			const parsed = queryString.parse(target);
+			target = parsed.illust_id;
+		}
+
 		return new Promise(resolve => {
-			this.auth()
-				.then(() => this.fetchInfo(id))
+			this.work(target)
+				.then(res => res[0])
 				.then(json => json.image_urls.large)
 				.then(url => saveImage(url, opts))
 				.then(resolve);
