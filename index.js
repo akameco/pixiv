@@ -5,6 +5,8 @@ const got = require('got');
 const queryString = require('query-string');
 const objectAssign = require('object-assign');
 
+const IMAGE_SIZES = 'px_128x128,px_480mw,small,medium,large';
+
 class Pixiv {
 	constructor(username, password) {
 		this.username = username;
@@ -62,8 +64,9 @@ class Pixiv {
 		if (!id) {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
-
-		const query = {image_sizes: 'large'}; // eslint-disable-line camelcase
+		const query = {
+			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+		};
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/works/${id}`, {query});
 	}
 
@@ -104,7 +107,7 @@ class Pixiv {
 			types: ['illustration', 'manga', 'ugoira'].join(','),
 			include_stats: true, // eslint-disable-line camelcase
 			include_sanity_level: true, // eslint-disable-line camelcase
-			image_sizes: ['px_128x128', 'px_480mw', 'large'].join(',') // eslint-disable-line camelcase
+			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
 		};
 
 		const query = objectAssign(defaultOpts, opts);
@@ -123,7 +126,7 @@ class Pixiv {
 			mode: opts.mode,
 			page: 1,
 			per_page: 100, // eslint-disable-line camelcase
-			image_sizes: ['small', 'px_128x128', 'px_480mw', 'large'].join(',') // eslint-disable-line camelcase
+			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
 		};
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/ranking/${type}`, {query});
@@ -142,7 +145,7 @@ class Pixiv {
 	}
 
 	favorite() {
-		const image_sizes = ['large', 'small', 'px_128x128', 'px_480mw'].join(','); // eslint-disable-line camelcase
+		const image_sizes = IMAGE_SIZES; // eslint-disable-line camelcase
 		const query = {
 			image_sizes // eslint-disable-line camelcase
 		};
