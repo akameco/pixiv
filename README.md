@@ -209,8 +209,12 @@ Type: `string`
 
 Type: `string`
 Default: `text`
+Values: `text` `tag` `exact_tag` `caption`
 
-`text`, `tag`, `exact_tag`, `caption`
+#### page
+
+Type: `string`, `number`
+Default: 1
 
 #### Usage
 
@@ -228,8 +232,7 @@ Get ranking data.
 
 Type: `string`
 Default: `all`
-
-`all`, `illust`, `manga`, `ugoira`
+Values: `all` `illust` `manga` `ugoira`
 
 
 ### options
@@ -238,8 +241,12 @@ Default: `all`
 
 Type: `string`
 Default: `daily`
+Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r18` `weekly_r18` `male_r18` `female_r18` `r18g`
 
-`daily`, `weekly`, `monthly`, `rookie`, `original`, `male`, `female`, `daily_r18`, `weekly_r18`, `male_r18`, `female_r18`, `r18g`
+#### page
+
+Type: `string`, `number`
+Default: 1
 
 ## Tests
 
