@@ -39,8 +39,6 @@ class Pixiv {
 
 	authGot(url, opts) {
 		return new Promise((resolve, reject) => {
-			opts = opts || {};
-
 			this._auth().then(() => {
 				opts = objectAssign({
 					headers: this.headers,
@@ -88,8 +86,6 @@ class Pixiv {
 		if (q === undefined) {
 			return Promise.reject(new Error('Search words is required.'));
 		}
-
-		opts = opts || {};
 
 		const query = objectAssign({
 			q,
@@ -148,8 +144,6 @@ class Pixiv {
 	}
 
 	userFollowing(id, opts) {
-		opts = opts || {};
-
 		const query = objectAssign({
 			page: 1,
 			per_page: 30 // eslint-disable-line camelcase
