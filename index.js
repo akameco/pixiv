@@ -40,7 +40,7 @@ class Pixiv {
 	authGot(url, opts) {
 		opts = opts || {};
 
-		return new Promise(resolve => {
+		return new Promise((resolve, reject) => {
 			this._auth().then(() => {
 				const defaultOpts = {
 					headers: this.headers,
@@ -55,7 +55,7 @@ class Pixiv {
 					} else {
 						resolve(res.body.response);
 					}
-				});
+				}).catch(reject);
 			});
 		});
 	}
