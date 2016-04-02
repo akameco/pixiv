@@ -61,7 +61,7 @@ class Pixiv {
 	}
 
 	work(id) {
-		if (!id) {
+		if (id === undefined) {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
 		const query = {
@@ -71,7 +71,7 @@ class Pixiv {
 	}
 
 	user(id) {
-		if (!id) {
+		if (id === undefined) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
@@ -79,7 +79,7 @@ class Pixiv {
 	}
 
 	userWorks(id) {
-		if (!id) {
+		if (id === undefined) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
@@ -87,7 +87,7 @@ class Pixiv {
 	}
 
 	search(q, opts) {
-		if (!q) {
+		if (q === undefined) {
 			return Promise.reject(new Error('Search words is required.'));
 		}
 
@@ -187,13 +187,17 @@ class Pixiv {
 }
 
 function saveImage(imgUrl, opts) {
-	opts = opts || {};
+	return new Promise((resolve, reject) => {
+		if (imgUrl === undefined) {
+			reject(new Error('imgUrl is required.'));
+		}
 
-	const directory = opts.directory || '';
-	let filename = opts.filename || path.basename(imgUrl);
-	filename = path.join(directory, filename);
+		opts = opts || {};
 
-	return new Promise(resolve => {
+		const directory = opts.directory || '';
+		let filename = opts.filename || path.basename(imgUrl);
+		filename = path.join(directory, filename);
+
 		const options = {
 			encoding: null,
 			headers: {
