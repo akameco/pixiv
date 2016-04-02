@@ -1,7 +1,7 @@
 {
   "name": "pixiv.js",
   "version": "0.6.0",
-  "description": "awsome pixiv api client",
+  "description": "pixiv API Client, Support downloading image",
   "main": "index.js",
   "files": [
     "index.js"
@@ -24,6 +24,7 @@
   },
   "keywords": [
     "pixiv",
+    "download",
     "image",
     "client",
     "illust"
