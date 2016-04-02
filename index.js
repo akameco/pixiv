@@ -38,16 +38,14 @@ class Pixiv {
 	}
 
 	authGot(url, opts) {
-		opts = opts || {};
-
 		return new Promise((resolve, reject) => {
+			opts = opts || {};
+
 			this._auth().then(() => {
-				const defaultOpts = {
+				opts = objectAssign({
 					headers: this.headers,
 					json: true
-				};
-
-				opts = objectAssign(opts, defaultOpts);
+				}, opts);
 
 				got(url, opts).then(res => {
 					if (res.body.response.length === 1) {
@@ -93,7 +91,7 @@ class Pixiv {
 
 		opts = opts || {};
 
-		const defaultOpts = {
+		const query = objectAssign({
 			q,
 			page: 1,
 			per_page: 100, // eslint-disable-line camelcase
@@ -108,18 +106,15 @@ class Pixiv {
 			include_stats: true, // eslint-disable-line camelcase
 			include_sanity_level: true, // eslint-disable-line camelcase
 			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
-		};
-
-		const query = objectAssign(defaultOpts, opts);
+		}, opts);
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/search/works`, {query});
 	}
 
 	// type: [all, illust, manga, ugoira]
 	ranking(type, opts) {
-		opts = opts || {mode: 'daily'};
-
 		type = type || 'all';
+		opts = opts || {mode: 'daily'};
 
 		const query = {
 			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
@@ -145,29 +140,28 @@ class Pixiv {
 	}
 
 	favorite() {
-		const image_sizes = IMAGE_SIZES; // eslint-disable-line camelcase
 		const query = {
-			image_sizes // eslint-disable-line camelcase
+			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
 		};
 
 		return this.authGot('https://public-api.secure.pixiv.net/v1/me/favorite_works', {query});
 	}
 
 	userFollowing(id, opts) {
-		const defaultOpts = {
+		opts = opts || {};
+
+		const query = objectAssign({
 			page: 1,
 			per_page: 30 // eslint-disable-line camelcase
-		};
-
-		const query = objectAssign({}, defaultOpts, opts);
+		}, opts);
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}/following.json`, {query});
 	}
 
 	download(target, opts) {
-		opts = opts || {};
-
 		return new Promise(resolve => {
+			opts = opts || {};
+
 			// saveImage when image url
 			if (/(jpg|png|gif)$/.test(target)) {
 				saveImage(target, opts).then(resolve);
