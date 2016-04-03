@@ -10,17 +10,6 @@ $ npm install --save pixiv.js
 
 ## Usage
 
-```js
-const Pixiv = require('pixiv.js');
-const pixiv = new Pixiv('your username', 'your password');
-const url = 'http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55029576';
-
-pixiv.download(url).then(filename => {
-	console.log(filename);
-	// => 55029576_p0.png
-});
-```
-
 ## API
 
 ### Pixiv(username, password)
@@ -207,48 +196,6 @@ Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r1
 
 Type: `string`, `number`
 Default: 1
-
-### pixiv.download(url, [options])
-
-Download image file from pixiv.
-
-#### url
-
-*Required*  
-Type: `string`, `number`
-
-url or illust_id.
-
-```js
-pixiv.download('http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55029576').then(output => {
-	console.log(output);
-	// => 55029576_p0.png
-});
-
-pixiv.download(55029576, {dir: 'media'}).then(output => {
-	console.log(output);
-	// => media/55029576_p0.png
-});
-```
-
-#### options
-
-Type: `object`
-
-##### path
-
-Type: `string`
-
-Output path.
-
-##### dir
-
-Type: `string`
-
-download directory.
-Default is current directory.
-
-If path has been set, to ignore this value.
 
 
 ## Tests
