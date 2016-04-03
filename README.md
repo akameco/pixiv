@@ -165,13 +165,10 @@ pixiv.works(56099861).then(res => {
 }
 ```
 
-### pixiv.feeds(r18)
+### pixiv.feeds([options])
 
-#### r18
-Type: `boolean`<br>
-Default: `true`
 
-### favoriteWorks([options])
+### pixiv.favoriteWorks([options])
 
 
 ### pixiv.following([options])

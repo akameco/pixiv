@@ -68,14 +68,12 @@ class Pixiv {
 		return this.authGot(`users/${id}`);
 	}
 
-	feeds(r18) {
-		const bool2num = b => b ? 1 : 0;
-
-		const query = {
+	feeds(opts) {
+		const query = objectAssign({
 			relation: 'all',
 			type: 'touch_nottext',
-			show_r18: bool2num(r18) || 1 // eslint-disable-line camelcase
-		};
+			show_r18: 1 // eslint-disable-line camelcase
+		}, opts);
 
 		return this.authGot('me/feeds', {query});
 	}
