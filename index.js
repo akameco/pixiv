@@ -110,7 +110,7 @@ class Pixiv {
 	// type: [all, illust, manga, ugoira]
 	ranking(type, opts) {
 		type = type || 'all';
-		opts = opts || {mode: 'daily'};
+		opts = objectAssign({mode: 'daily'}, opts);
 
 		const query = {
 			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
@@ -154,7 +154,7 @@ class Pixiv {
 
 	download(target, opts) {
 		return new Promise(resolve => {
-			opts = opts || {};
+			opts = objectAssign({}, opts);
 
 			// saveImage when image url
 			if (/(jpg|png|gif)$/.test(target)) {
