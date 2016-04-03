@@ -48,14 +48,14 @@ See examples.
 
 #### username
 
-*Required*  
+*Required*<br>
 Type: `string`
 
 your pixiv username.
 
 #### password
 
-*Required*  
+*Required*<br>
 Type: `string`
 
 your pixiv password.
@@ -66,7 +66,7 @@ Get user info json.
 
 #### userId
 
-*Required*  
+*Required*<br>
 Type: `string`, `number`
 
 #### Usage
@@ -101,7 +101,7 @@ Get illust info json.
 
 #### illustId
 
-*Required*  
+*Required*<br>
 Type: `string`, `number`
 
 #### Usage
@@ -170,7 +170,7 @@ Get user works.
 
 ### userId
 
-*Required*  
+*Required*<br>
 Type: `string`, `number`
 
 ### pixiv.search(query, [options])
@@ -181,20 +181,20 @@ search pixiv
 
 query word
 
-*Required*  
+*Required*<br>
 Type: `string`
 
 #### options
 
 ##### mode
 
-Type: `string`
-Default: `text`
+Type: `string`<br>
+Default: `text`<br>
 Values: `text` `tag` `exact_tag` `caption`
 
 #### page
 
-Type: `string`, `number`
+Type: `string`, `number`<br>
 Default: 1
 
 #### Usage
@@ -211,8 +211,8 @@ Get ranking data.
 
 ### type
 
-Type: `string`
-Default: `all`
+Type: `string`<br>
+Default: `all`<br>
 Values: `all` `illust` `manga` `ugoira`
 
 
@@ -220,13 +220,13 @@ Values: `all` `illust` `manga` `ugoira`
 
 #### mode
 
-Type: `string`
-Default: `daily`
+Type: `string`<br>
+Default: `daily`<br>
 Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r18` `weekly_r18` `male_r18` `female_r18` `r18g`
 
 #### page
 
-Type: `string`, `number`
+Type: `string`, `number`<br>
 Default: 1
 
 
