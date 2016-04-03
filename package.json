@@ -36,6 +36,7 @@
   "dependencies": {
     "got": "^6.2.0",
     "object-assign": "^4.0.1",
+    "pixiv-img": "^0.2.0",
     "query-string": "^4.1.0"
   },
   "devDependencies": {

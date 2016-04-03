@@ -220,14 +220,14 @@ Type: `string`, `number`
 url or illust_id.
 
 ```js
-pixiv.download('http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55029576').then(filename => {
-	console.log(filename);
+pixiv.download('http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55029576').then(output => {
+	console.log(output);
 	// => 55029576_p0.png
 });
 
-pixiv.download(55029576).then(filename => {
-	console.log(filename);
-	// => 55029576_p0.png
+pixiv.download(55029576, {dir: 'media'}).then(output => {
+	console.log(output);
+	// => media/55029576_p0.png
 });
 ```
 
@@ -235,18 +235,20 @@ pixiv.download(55029576).then(filename => {
 
 Type: `object`
 
-##### filename
+##### path
 
 Type: `string`
 
-Set the download filename.
+Output path.
 
-##### directory
+##### dir
 
 Type: `string`
 
-Set the download directory.
+download directory.
 Default is current directory.
+
+If path has been set, to ignore this value.
 
 
 ## Tests

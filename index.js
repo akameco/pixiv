@@ -1,9 +1,9 @@
 'use strict';
-const fs = require('fs');
-const path = require('path');
 const got = require('got');
 const queryString = require('query-string');
 const objectAssign = require('object-assign');
+const pixivImg = require('pixiv-img');
+const path = require('path');
 
 const IMAGE_SIZES = 'px_128x128,px_480mw,small,medium,large';
 
@@ -158,7 +158,7 @@ class Pixiv {
 
 			// saveImage when image url
 			if (/(jpg|png|gif)$/.test(target)) {
-				saveImage(target, opts).then(resolve);
+				pixivImg(target, opts).then(resolve);
 			}
 
 			if (/illust_id/.test(target)) {
@@ -168,36 +168,22 @@ class Pixiv {
 
 			this.work(target)
 				.then(json => json.image_urls.large)
-				.then(url => saveImage(url, opts))
+				.then(url => {
+					let output;
+
+					if (opts.path) {
+						output = opts.path;
+					} else if (opts.dir) {
+						output = path.resolve(opts.dir, path.basename(url));
+					} else {
+						output = path.basename(url);
+					}
+
+					return pixivImg(url, output);
+				})
 				.then(resolve);
 		});
 	}
 }
 
-function saveImage(imgUrl, opts) {
-	return new Promise((resolve, reject) => {
-		if (imgUrl === undefined) {
-			reject(new Error('imgUrl is required.'));
-		}
-
-		opts = opts || {};
-
-		const directory = opts.directory || '';
-		let filename = opts.filename || path.basename(imgUrl);
-		filename = path.join(directory, filename);
-
-		const options = {
-			encoding: null,
-			headers: {
-				Referer: 'http://www.pixiv.net/'
-			}
-		};
-
-		got.stream(imgUrl, options).pipe(fs.createWriteStream(filename)).on('close', () => {
-			resolve(filename);
-		});
-	});
-}
-
-module.exports.saveImage = Pixiv.prototype.saveImage = saveImage;
 module.exports = Pixiv;
