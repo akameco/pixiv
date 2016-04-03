@@ -46,11 +46,7 @@ class Pixiv {
 				}, opts);
 
 				got(url, opts).then(res => {
-					if (res.body.response.length === 1) {
-						resolve(res.body.response[0]);
-					} else {
-						resolve(res.body.response);
-					}
+					resolve(res.body);
 				}).catch(reject);
 			});
 		});
