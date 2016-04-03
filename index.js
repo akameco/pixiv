@@ -153,7 +153,7 @@ class Pixiv {
 	}
 
 	download(target, opts) {
-		return new Promise(resolve => {
+		return new Promise((resolve, reject) => {
 			opts = objectAssign({}, opts);
 
 			// saveImage when image url
@@ -181,7 +181,8 @@ class Pixiv {
 
 					return pixivImg(url, output);
 				})
-				.then(resolve);
+				.then(resolve)
+				.catch(reject);
 		});
 	}
 }
