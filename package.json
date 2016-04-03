@@ -46,9 +46,6 @@
     "xo": "^0.13.0"
   },
   "xo": {
-    "esnext": true,
-    "ignores": [
-      "example/**"
-    ]
+    "esnext": true
   }
 }
