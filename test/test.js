@@ -97,14 +97,45 @@ test('feeds', async t => {
 	t.true(Array.isArray(json.response));
 });
 
-test('favorite', async t => {
+test('favoriteWorks', async t => {
 	const pixiv = new Pixiv(username, password);
-	const json = await pixiv.favorite();
+	const json = await pixiv.favoriteWorks();
 	t.true(Array.isArray(json.response));
 });
 
 test('userFollowing', async t => {
 	const pixiv = new Pixiv(username, password);
-	const json = await pixiv.favorite();
+	const json = await pixiv.userFollowing(7076552);
+	t.true(Array.isArray(json.response));
+});
+
+test('uerFeeds', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.userFeeds(7076552);
+	t.true(Array.isArray(json.response));
+});
+
+test('latestWorks', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.latestWorks();
+	t.true(Array.isArray(json.response));
+});
+
+test('followingWorks', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.followingWorks();
+	t.true(Array.isArray(json.response));
+});
+
+test('following', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.following();
+	t.true(Array.isArray(json.response));
+});
+
+test('userFovariteWorks', async t => {
+	const pixiv = new Pixiv(username, password);
+	const json = await pixiv.userFavoriteWorks(7076552);
+	console.log(json);
 	t.true(Array.isArray(json.response));
 });

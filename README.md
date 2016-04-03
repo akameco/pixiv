@@ -11,7 +11,7 @@ $ npm install --save pixiv.js
 ## Usage
 
 ```js
-pixiv.user(471355).then(res => {
+pixiv.users(471355).then(res => {
 	console.log(res.response[0].name);
 	// => 嵐月
 });
@@ -61,7 +61,7 @@ Type: `string`
 
 your pixiv password.
 
-### pixiv.user(userId)
+### pixiv.users(userId)
 
 Get user info json.
 
@@ -73,7 +73,7 @@ Type: `string`, `number`
 #### Usage
 
 ```js
-pixiv.user(471355).then(res => {
+pixiv.users(471355).then(res => {
 	console.log(JSON.stringify(res.response[0], null, 2));
 });
 ```
@@ -96,7 +96,7 @@ pixiv.user(471355).then(res => {
 }
 ```
 
-### pixiv.work(illustId)
+### pixiv.works(illustId)
 
 Get illust info json.
 
@@ -108,7 +108,7 @@ Type: `string`, `number`
 #### Usage
 
 ```js
-pixiv.work(56099861).then(res => {
+pixiv.works(56099861).then(res => {
 	console.log(JSON.stringify(res.response[0], null, 2));
 });
 ```
@@ -165,14 +165,39 @@ pixiv.work(56099861).then(res => {
 }
 ```
 
+### pixiv.feeds(r18)
+
+#### r18
+Type: `boolean`<br>
+Default: `true`
+
+### favoriteWorks([options])
+
+
+### pixiv.following([options])
+
+
+### pixiv.followingWorks([options])
+
+
 ### pixiv.userWorks(userId)
 
 Get user works.
 
-### userId
+#### userId
 
 *Required*<br>
 Type: `string`, `number`
+
+### pixiv.userWorks(id, [options])
+
+### pixiv.userFavoriteWorks(id, [options])
+
+### pixiv.userFeeds(id, [options])
+
+### pixiv.userFollowing(id, [options])
+
+### pixiv.latestWorks([options])
 
 ### pixiv.search(query, [options])
 
@@ -205,6 +230,7 @@ pixiv.search('艦これ1000users入り', {mode: 'tag'}).then(res => {
 	console.log(JSON.stringify(res, null, 2));
 });
 ```
+
 
 ### pixiv.ranking(type, [options])
 
