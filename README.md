@@ -11,8 +11,9 @@ $ npm install --save pixiv.js
 ## Usage
 
 ```js
-pixiv.user(471355).then(josn => {
-	console.log();
+pixiv.user(471355).then(res => {
+	console.log(res.response[0].name);
+	// => 嵐月
 });
 ```
 
@@ -72,8 +73,8 @@ Type: `string`, `number`
 #### Usage
 
 ```js
-pixiv.user(471355).then(info => {
-	console.log(JSON.stringify(info, null, 2));
+pixiv.user(471355).then(res => {
+	console.log(JSON.stringify(res.response[0], null, 2));
 });
 ```
 
@@ -107,8 +108,8 @@ Type: `string`, `number`
 #### Usage
 
 ```js
-pixiv.work(56099861).then(info => {
-	console.log(JSON.stringify(info, null, 2));
+pixiv.work(56099861).then(res => {
+	console.log(JSON.stringify(res.response[0], null, 2));
 });
 ```
 
