@@ -6,8 +6,8 @@ const password = process.env.PASSWORD;
 
 const pixiv = new Pixiv(username, password);
 
-pixiv.user(471355).then(info => {
-	console.log(JSON.stringify(info, null, 2));
+pixiv.user(471355).then(res => {
+	console.log(JSON.stringify(res, null, 2));
 });
 
 pixiv.work(56099861).then(info => {
