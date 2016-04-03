@@ -16,7 +16,7 @@ pixiv.user(471355).then(josn => {
 });
 ```
 
-If you want download image, you can use [pixiv-img](https://github.com/akameco/pixiv-img) with `pixiv.js`
+If you want download image, you can use with [pixiv-img](https://github.com/akameco/pixiv-img).
 
 ```
 $ npm install --save pixiv-img
