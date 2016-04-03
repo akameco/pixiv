@@ -7,32 +7,32 @@ test('expose a constructor', async t => {
 	t.true(typeof Pixiv === 'function');
 });
 
-test('work', async t => {
+test('works', async t => {
 	const pixiv = new Pixiv(username, password);
-	const json = await pixiv.work(56131089);
+	const json = await pixiv.works(56131089);
 	t.same(json.response[0].title, 'test');
 });
 
 test('error pixiv.work has empty arguments', async t => {
 	const pixiv = new Pixiv(username, password);
 	try {
-		await pixiv.work();
+		await pixiv.works();
 		t.fail('Exception is not thrown');
 	} catch (err) {
 		t.ok(err);
 	}
 });
 
-test('user', async t => {
+test('users', async t => {
 	const pixiv = new Pixiv(username, password);
-	const json = await pixiv.user(7076552);
+	const json = await pixiv.users(7076552);
 	t.same(json.response[0].account, 'akameco');
 });
 
 test('error pixiv.user has empty arguments', async t => {
 	const pixiv = new Pixiv(username, password);
 	try {
-		await pixiv.user();
+		await pixiv.users();
 		t.fail('Exception is not thrown');
 	} catch (err) {
 		t.ok(err);
@@ -91,9 +91,9 @@ test('ranking type illust', async t => {
 	t.true(Array.isArray(json.response[0].works));
 });
 
-test('feed', async t => {
+test('feeds', async t => {
 	const pixiv = new Pixiv(username, password);
-	const json = await pixiv.feed();
+	const json = await pixiv.feeds();
 	t.true(Array.isArray(json.response));
 });
 

@@ -49,7 +49,7 @@ class Pixiv {
 		});
 	}
 
-	work(id) {
+	works(id) {
 		if (id === undefined) {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
@@ -59,12 +59,13 @@ class Pixiv {
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/works/${id}`, {query});
 	}
 
-	user(id) {
+	users(id) {
 		if (id === undefined) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}`);
+	feeds(r18) {
 	}
 
 	userWorks(id) {
@@ -116,7 +117,6 @@ class Pixiv {
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/ranking/${type}`, {query});
 	}
 
-	feed(r18) {
 		const bool2num = b => b ? 1 : 0;
 
 		const query = {
