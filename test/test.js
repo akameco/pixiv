@@ -10,7 +10,7 @@ test('expose a constructor', async t => {
 test('work', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.work(56131089);
-	t.same(json.title, 'test');
+	t.same(json.response[0].title, 'test');
 });
 
 test('error pixiv.work has empty arguments', async t => {
@@ -26,7 +26,7 @@ test('error pixiv.work has empty arguments', async t => {
 test('user', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.user(7076552);
-	t.same(json.account, 'akameco');
+	t.same(json.response[0].account, 'akameco');
 });
 
 test('error pixiv.user has empty arguments', async t => {
@@ -58,13 +58,13 @@ test('error pixiv.userWorks has empty arguments', async t => {
 test('search by 艦これ', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.search('艦これ');
-	t.true(Array.isArray(json));
+	t.true(Array.isArray(json.response));
 });
 
 test('search by 艦これ with tag', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.search('艦これ', {mode: 'tag'});
-	t.true(Array.isArray(json));
+	t.true(Array.isArray(json.response));
 });
 
 test('error pixiv.search has empty arguments', async t => {
@@ -80,31 +80,31 @@ test('error pixiv.search has empty arguments', async t => {
 test('ranking', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.ranking();
-	t.same(json.mode, 'daily');
-	t.true(Array.isArray(json.works));
+	t.same(json.response[0].mode, 'daily');
+	t.true(Array.isArray(json.response[0].works));
 });
 
 test('ranking type illust', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.ranking('illust');
-	t.same(json.content, 'illust');
-	t.true(Array.isArray(json.works));
+	t.same(json.response[0].content, 'illust');
+	t.true(Array.isArray(json.response[0].works));
 });
 
 test('feed', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.feed();
-	t.true(Array.isArray(json));
+	t.true(Array.isArray(json.response));
 });
 
 test('favorite', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.favorite();
-	t.true(Array.isArray(json));
+	t.true(Array.isArray(json.response));
 });
 
 test('userFollowing', async t => {
 	const pixiv = new Pixiv(username, password);
 	const json = await pixiv.favorite();
-	t.true(Array.isArray(json));
+	t.true(Array.isArray(json.response));
 });
