@@ -2,13 +2,45 @@
 
 > pixiv API client
 
-## Installation
+## Install
 
 ```
 $ npm install --save pixiv.js
 ```
 
 ## Usage
+
+```js
+pixiv.user(471355).then(josn => {
+	console.log();
+});
+```
+
+If you want download image, you can use [pixiv-img](https://github.com/akameco/pixiv-img) with `pixiv.js`
+
+```
+$ npm install --save pixiv-img
+```
+
+```js
+const Pixiv = require('pixiv.js');
+const pixivImg = require('pixiv-img');
+
+const pixiv = new Pixiv('your username...', 'your password...');
+
+pixiv.search('艦これ10000users入り', {mode: 'tag'})
+	.then(json => {
+		const work = json.response[0];
+		console.log(`downloading... ${work.title} by ${work.user.name} `);
+		return pixivImg(work.image_urls.large);
+	}).then(() => console.log('finish!'))
+	.catch(console.log);
+
+// => downloading... 鹿島風さん by ぺこ
+// => finish!
+```
+
+See examples.
 
 ## API
 
@@ -210,6 +242,11 @@ export PASSWORD=your pixiv password...
 ```
 $ npm test
 ```
+
+
+## Related
+
+- [pixiv-img](https://github.com/akameco/pixiv-img) - save the image of pixiv
 
 ## License
 
