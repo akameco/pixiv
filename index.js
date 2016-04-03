@@ -1,9 +1,6 @@
 'use strict';
 const got = require('got');
-const queryString = require('query-string');
 const objectAssign = require('object-assign');
-const pixivImg = require('pixiv-img');
-const path = require('path');
 
 const IMAGE_SIZES = 'px_128x128,px_480mw,small,medium,large';
 
@@ -146,40 +143,6 @@ class Pixiv {
 		}, opts);
 
 		return this.authGot(`https://public-api.secure.pixiv.net/v1/users/${id}/following.json`, {query});
-	}
-
-	download(target, opts) {
-		return new Promise((resolve, reject) => {
-			opts = objectAssign({}, opts);
-
-			// saveImage when image url
-			if (/(jpg|png|gif)$/.test(target)) {
-				pixivImg(target, opts).then(resolve);
-			}
-
-			if (/illust_id/.test(target)) {
-				const parsed = queryString.parse(target);
-				target = parsed.illust_id;
-			}
-
-			this.work(target)
-				.then(json => json.image_urls.large)
-				.then(url => {
-					let output;
-
-					if (opts.path) {
-						output = opts.path;
-					} else if (opts.dir) {
-						output = path.resolve(opts.dir, path.basename(url));
-					} else {
-						output = path.basename(url);
-					}
-
-					return pixivImg(url, output);
-				})
-				.then(resolve)
-				.catch(reject);
-		});
 	}
 }
 
