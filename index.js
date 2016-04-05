@@ -150,15 +150,13 @@ class Pixiv {
 	// type: [all, illust, manga, ugoira]
 	ranking(type, opts) {
 		type = type || 'all';
-		opts = objectAssign({mode: 'daily'}, opts);
-
-		const query = {
+		const query = objectAssign({
 			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
-			mode: opts.mode,
+			mode: 'daily',
 			page: 1,
 			per_page: 100, // eslint-disable-line camelcase
 			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
-		};
+		}, opts);
 
 		return this.authGot(`ranking/${type}`, {query});
 	}
