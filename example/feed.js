@@ -9,7 +9,7 @@ const password = process.env.PASSWORD;
 
 const pixiv = new Pixiv(username, password);
 
-pixiv.favorite()
+pixiv.favoriteWorks()
 	.then(json => json.response)
 	.then(arr => {
 		co(function * () {

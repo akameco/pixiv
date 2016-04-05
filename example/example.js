@@ -6,13 +6,13 @@ const password = process.env.PASSWORD;
 
 const pixiv = new Pixiv(username, password);
 
-pixiv.user(471355).then(res => {
+pixiv.users(471355).then(res => {
 	const userInfo = res.response[0];
 	console.log(userInfo.name);
 	// => 嵐月
 });
 
-pixiv.work(56099861).then(res => {
+pixiv.works(56099861).then(res => {
 	const workInfo = res.response[0];
 	console.log(workInfo.title);
 	// => 春の到来
