@@ -1,4 +1,4 @@
-# pixiv.js [![Build Status](https://travis-ci.org/akameco/pixiv.js.svg?branch=master)](https://travis-ci.org/akameco/pixiv.js)
+# pixiv.js [![Build Status](https://travis-ci.org/akameco/pixiv.svg?branch=master)](https://travis-ci.org/akameco/pixiv)
 
 > pixiv API client
 
