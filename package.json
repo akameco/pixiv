@@ -39,7 +39,7 @@
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
-    "ava": "^0.14.0",
+    "ava": "^0.15.1",
     "del-cli": "^0.2.0",
     "xo": "^0.13.0"
   },
