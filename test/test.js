@@ -13,7 +13,7 @@ test('expose a constructor', async t => {
 
 test('works', async t => {
 	const json = await t.context.pixiv.works(56131089);
-	t.same(json.response[0].title, 'test');
+	t.is(json.response[0].title, 'test');
 });
 
 test('error pixiv.work has empty arguments', async t => {
@@ -21,13 +21,13 @@ test('error pixiv.work has empty arguments', async t => {
 		await t.context.pixiv.works();
 		t.fail('Exception is not thrown');
 	} catch (err) {
-		t.ok(err);
+		t.pass(err);
 	}
 });
 
 test('users', async t => {
 	const json = await t.context.pixiv.users(7076552);
-	t.same(json.response[0].account, 'akameco');
+	t.is(json.response[0].account, 'akameco');
 });
 
 test('error pixiv.user has empty arguments', async t => {
@@ -35,7 +35,7 @@ test('error pixiv.user has empty arguments', async t => {
 		await t.context.pixiv.users();
 		t.fail('Exception is not thrown');
 	} catch (err) {
-		t.ok(err);
+		t.pass(err);
 	}
 });
 
@@ -49,7 +49,7 @@ test('error pixiv.userWorks has empty arguments', async t => {
 		await t.context.pixiv.userWorks();
 		t.fail('Exception is not thrown');
 	} catch (err) {
-		t.ok(err);
+		t.pass();
 	}
 });
 
@@ -74,19 +74,19 @@ test('error pixiv.search has empty arguments', async t => {
 		await t.context.pixiv.search();
 		t.fail('Exception is not thrown');
 	} catch (err) {
-		t.ok(err);
+		t.pass();
 	}
 });
 
 test('ranking', async t => {
 	const json = await t.context.pixiv.ranking();
-	t.same(json.response[0].mode, 'daily');
+	t.is(json.response[0].mode, 'daily');
 	t.true(Array.isArray(json.response[0].works));
 });
 
 test('ranking type illust', async t => {
 	const json = await t.context.pixiv.ranking('illust');
-	t.same(json.response[0].content, 'illust');
+	t.is(json.response[0].content, 'illust');
 	t.true(Array.isArray(json.response[0].works));
 });
 

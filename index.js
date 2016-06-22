@@ -1,7 +1,7 @@
 'use strict';
+const url = require('url');
 const got = require('got');
 const objectAssign = require('object-assign');
-const url = require('url');
 
 const IMAGE_SIZES = 'px_128x128,px_480mw,small,medium,large';
 
@@ -18,9 +18,9 @@ class Pixiv {
 			}
 
 			const body = {
-				client_id: "bYGKuGVw91e0NMfPGp44euvGt59s",  // eslint-disable-line camelcase
-				client_secret: "HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK", // eslint-disable-line camelcase
-				grant_type: "password", // eslint-disable-line camelcase
+				client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',  // eslint-disable-line camelcase
+				client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK', // eslint-disable-line camelcase
+				grant_type: 'password', // eslint-disable-line camelcase
 				username: this.username,
 				password: this.password
 			};

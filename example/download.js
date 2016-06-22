@@ -1,6 +1,6 @@
 'use strict';
-const Pixiv = require('../');
 const pixivImg = require('pixiv-img');
+const Pixiv = require('../');
 
 const username = process.env.USERNAME;
 const password = process.env.PASSWORD;
