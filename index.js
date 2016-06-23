@@ -51,7 +51,7 @@ class Pixiv {
 	}
 
 	works(id) {
-		if (id === undefined) {
+		if (!id) {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
 		const query = {
@@ -61,7 +61,7 @@ class Pixiv {
 	}
 
 	users(id) {
-		if (id === undefined) {
+		if (!id) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
@@ -109,7 +109,7 @@ class Pixiv {
 	}
 
 	userWorks(id) {
-		if (id === undefined) {
+		if (!id) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
@@ -173,7 +173,7 @@ class Pixiv {
 	}
 
 	search(q, opts) {
-		if (q === undefined) {
+		if (!q) {
 			return Promise.reject(new Error('Search words is required.'));
 		}
 
