@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable camelcase */
 const url = require('url');
 const got = require('got');
 const objectAssign = require('object-assign');
@@ -18,9 +19,9 @@ class Pixiv {
 			}
 
 			const body = {
-				client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',  // eslint-disable-line camelcase
-				client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK', // eslint-disable-line camelcase
-				grant_type: 'password', // eslint-disable-line camelcase
+				client_id: 'bYGKuGVw91e0NMfPGp44euvGt59s',
+				client_secret: 'HP3RmkgAmEGro0gn1x9ioawQE8WMfvLXDz3ZqxpK',
+				grant_type: 'password',
 				username: this.username,
 				password: this.password
 			};
@@ -55,7 +56,7 @@ class Pixiv {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
 		const query = {
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			image_sizes: IMAGE_SIZES
 		};
 		return this.authGot(`works/${id}`, {query});
 	}
@@ -72,7 +73,7 @@ class Pixiv {
 		const query = objectAssign({
 			relation: 'all',
 			type: 'touch_nottext',
-			show_r18: 1 // eslint-disable-line camelcase
+			show_r18: 1
 		}, opts);
 
 		return this.authGot('me/feeds', {query});
@@ -80,7 +81,7 @@ class Pixiv {
 
 	favoriteWorks(opts) {
 		const query = objectAssign({
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			image_sizes: IMAGE_SIZES
 		}, opts);
 
 		return this.authGot('me/favorite_works', {query});
@@ -89,7 +90,7 @@ class Pixiv {
 	following(opts) {
 		const query = objectAssign({
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
+			per_page: 100,
 			publicity: 'public'
 		}, opts);
 
@@ -99,10 +100,10 @@ class Pixiv {
 	followingWorks(opts) {
 		const query = objectAssign({
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
-			include_stats: true, // eslint-disable-line camelcase
-			include_sanity_level: true, // eslint-disable-line camelcase
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			per_page: 100,
+			include_stats: true,
+			include_sanity_level: true,
+			image_sizes: IMAGE_SIZES
 		}, opts);
 
 		return this.authGot('me/following/works', {query});
@@ -119,10 +120,10 @@ class Pixiv {
 	userFavoriteWorks(id, opts) {
 		const query = objectAssign({
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
-			include_stats: true, // eslint-disable-line camelcase
-			include_sanity_level: true, // eslint-disable-line camelcase
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			per_page: 100,
+			include_stats: true,
+			include_sanity_level: true,
+			image_sizes: IMAGE_SIZES
 		}, opts);
 
 		return this.authGot(`users/${id}/favorite_works`, {query});
@@ -131,7 +132,7 @@ class Pixiv {
 	userFollowing(id, opts) {
 		const query = objectAssign({
 			page: 1,
-			per_page: 30 // eslint-disable-line camelcase
+			per_page: 30
 		}, opts);
 
 		return this.authGot(`users/${id}/following`, {query});
@@ -141,7 +142,7 @@ class Pixiv {
 		const query = objectAssign({
 			relation: 'all',
 			type: 'touch_nottext',
-			show_r18: 1 // eslint-disable-line camelcase
+			show_r18: 1
 		}, opts);
 
 		return this.authGot(`users/${id}/feeds`, {query});
@@ -154,8 +155,8 @@ class Pixiv {
 			// mode: daily, weekly, monthly, rookie, original, male, female, daily_r18, weekly_r18, male_r18, female_r18, r18g
 			mode: 'daily',
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			per_page: 100,
+			image_sizes: IMAGE_SIZES
 		}, opts);
 
 		return this.authGot(`ranking/${type}`, {query});
@@ -164,10 +165,10 @@ class Pixiv {
 	latestWorks(opts) {
 		const query = objectAssign({
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
-			include_stats: true, // eslint-disable-line camelcase
-			include_sanity_level: true, // eslint-disable-line camelcase
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			per_page: 100,
+			include_stats: true,
+			include_sanity_level: true,
+			image_sizes: IMAGE_SIZES
 		}, opts);
 		return this.authGot(`works`, {query});
 	}
@@ -180,7 +181,7 @@ class Pixiv {
 		const query = objectAssign({
 			q,
 			page: 1,
-			per_page: 100, // eslint-disable-line camelcase
+			per_page: 100,
 			// order: desc, asc
 			order: 'desc',
 			sort: 'date',
@@ -189,9 +190,9 @@ class Pixiv {
 			// mode: text, tag, exact_tag, caption
 			mode: 'text',
 			types: ['illustration', 'manga', 'ugoira'].join(','),
-			include_stats: true, // eslint-disable-line camelcase
-			include_sanity_level: true, // eslint-disable-line camelcase
-			image_sizes: IMAGE_SIZES // eslint-disable-line camelcase
+			include_stats: true,
+			include_sanity_level: true,
+			image_sizes: IMAGE_SIZES
 		}, opts);
 
 		return this.authGot(`search/works`, {query});
