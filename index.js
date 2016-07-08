@@ -159,6 +159,7 @@ class Pixiv {
 			mode: 'daily',
 			page: 1,
 			per_page: 100,
+			include_stats: true,
 			image_sizes: IMAGE_SIZES
 		}, opts);
 
