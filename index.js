@@ -51,13 +51,16 @@ class Pixiv {
 		});
 	}
 
-	works(id) {
+	works(id, opts) {
 		if (!id) {
 			return Promise.reject(new Error('Illust Id is required.'));
 		}
-		const query = {
-			image_sizes: IMAGE_SIZES
-		};
+
+		const query = objectAssign({
+			image_sizes: IMAGE_SIZES,
+			include_stats: true
+		}, opts);
+
 		return this.authGot(`works/${id}`, {query});
 	}
 
