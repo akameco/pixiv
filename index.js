@@ -112,12 +112,19 @@ class Pixiv {
 		return this.authGot('me/following/works', {query});
 	}
 
-	userWorks(id) {
+	userWorks(id, opts) {
 		if (!id) {
 			return Promise.reject(new Error('UserId is required.'));
 		}
 
-		return this.authGot(`users/${id}/works`);
+		const query = objectAssign({
+			page: 1,
+			include_stats: true,
+			include_sanity_level: true,
+			image_sizes: IMAGE_SIZES
+		}, opts);
+
+		return this.authGot(`users/${id}/works`, {query});
 	}
 
 	userFavoriteWorks(id, opts) {
