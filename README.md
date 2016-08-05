@@ -253,6 +253,10 @@ Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r1
 Type: `string`, `number`<br>
 Default: 1
 
+### pixiv.addFavorite(id, [options])
+
+### pixiv.removeFavorite(ids, [options])
+
 
 ## Tests
 
