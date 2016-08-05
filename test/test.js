@@ -40,13 +40,13 @@ test('error pixiv.user has empty arguments', async t => {
 });
 
 test('userWorks', async t => {
-	const json = await t.context.pixiv.userWorks(7076552);
+	const json = await t.context.pixiv.usersWorks(7076552);
 	t.true(typeof json === 'object');
 });
 
 test('error pixiv.userWorks has empty arguments', async t => {
 	try {
-		await t.context.pixiv.userWorks();
+		await t.context.pixiv.usersWorks();
 		t.fail('Exception is not thrown');
 	} catch (err) {
 		t.pass();
@@ -101,12 +101,12 @@ test('favoriteWorks', async t => {
 });
 
 test('userFollowing', async t => {
-	const json = await t.context.pixiv.userFollowing(7076552);
+	const json = await t.context.pixiv.usersFollowing(7076552);
 	t.true(Array.isArray(json.response));
 });
 
 test('uerFeeds', async t => {
-	const json = await t.context.pixiv.userFeeds(7076552);
+	const json = await t.context.pixiv.usersFeeds(7076552);
 	t.true(Array.isArray(json.response));
 });
 
@@ -121,7 +121,7 @@ test('following', async t => {
 });
 
 test('userFovariteWorks', async t => {
-	const json = await t.context.pixiv.userFavoriteWorks(7076552);
+	const json = await t.context.pixiv.usersFavoriteWorks(7076552);
 	t.true(Array.isArray(json.response));
 });
 
