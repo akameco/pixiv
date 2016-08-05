@@ -7,7 +7,6 @@
     "index.js"
   ],
   "scripts": {
-    "clean": "del ./**/{*.jpg,*.png}",
     "test": "xo && ava"
   },
   "engins": {
@@ -35,12 +34,10 @@
   },
   "homepage": "https://github.com/akameco/pixiv.js#readme",
   "dependencies": {
-    "got": "^6.2.0",
-    "object-assign": "^4.0.1"
+    "got": "^6.2.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",
-    "del-cli": "^0.2.0",
     "xo": "^0.16.0"
   },
   "xo": {
