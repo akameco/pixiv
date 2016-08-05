@@ -209,6 +209,32 @@ class Pixiv {
 
 		return this.authGot(`search/works`, {query});
 	}
+
+	addFavorite(id, opts) {
+		if (!id) {
+			throw new Error('id is required');
+		}
+
+		const query = objectAssign({
+			work_id: id,
+			publicity: 'public'
+		}, opts);
+
+		return this.authGot('me/favorite_works', {query}, 'post');
+	}
+
+	removeFavorite(ids, opts) {
+		if (!ids) {
+			throw new Error('ids is required');
+		}
+
+		const query = objectAssign({
+			ids: ids.join(','),
+			publicity: 'public'
+		}, opts);
+
+		return this.authGot('me/favorite_works', {query}, 'delete');
+	}
 }
 
 module.exports = Pixiv;
