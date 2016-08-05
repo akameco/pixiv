@@ -35,7 +35,8 @@ class Pixiv {
 		});
 	}
 
-	authGot(path, opts) {
+	authGot(path, opts, method) {
+		method = method || 'get';
 		return new Promise((resolve, reject) => {
 			this._auth().then(() => {
 				opts = objectAssign({
@@ -43,7 +44,8 @@ class Pixiv {
 					json: true
 				}, opts);
 
-				got(url.resolve('https://public-api.secure.pixiv.net/v1/', path), opts).then(res => {
+				const reqestURL = url.resolve('https://public-api.secure.pixiv.net/v1/', path);
+				got[method](reqestURL, opts).then(res => {
 					resolve(res.body);
 				}).catch(reject);
 			});
