@@ -1,5 +1,4 @@
 'use strict';
-/* eslint-disable camelcase */
 const url = require('url');
 const got = require('got');
 const objectAssign = require('object-assign');

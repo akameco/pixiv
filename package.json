@@ -44,6 +44,9 @@
     "xo": "^0.16.0"
   },
   "xo": {
-    "esnext": true
+    "esnext": true,
+    "rules": {
+      "camelcase": 0
+    }
   }
 }
