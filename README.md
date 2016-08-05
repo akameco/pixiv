@@ -177,7 +177,7 @@ pixiv.works(56099861).then(res => {
 ### pixiv.followingWorks([options])
 
 
-### pixiv.userWorks(userId)
+### pixiv.usersWorks(userId)
 
 Get user works.
 
@@ -186,13 +186,13 @@ Get user works.
 *Required*<br>
 Type: `string`, `number`
 
-### pixiv.userWorks(id, [options])
+### pixiv.usersWorks(id, [options])
 
-### pixiv.userFavoriteWorks(id, [options])
+### pixiv.usersFavoriteWorks(id, [options])
 
-### pixiv.userFeeds(id, [options])
+### pixiv.usersFeeds(id, [options])
 
-### pixiv.userFollowing(id, [options])
+### pixiv.usersFollowing(id, [options])
 
 ### pixiv.latestWorks([options])
 
