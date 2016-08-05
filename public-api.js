@@ -39,7 +39,6 @@ class Pixiv {
 			type: 'touch_nottext',
 			show_r18: 1
 		}, query);
-		console.log(query);
 		return this.authGot('me/feeds', query);
 	}
 
