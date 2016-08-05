@@ -188,6 +188,23 @@ class Pixiv {
 		}, query);
 		return this.authGot('works', query);
 	}
+
+	// old api
+	userWorks(id, query) {
+		this.usersWorks(id, query);
+	}
+
+	userFavoriteWorks(id, query) {
+		this.usersFavoriteWorks(id, query);
+	}
+
+	userFeeds(id, query) {
+		this.usersFeeds(id, query);
+	}
+
+	userFollowing(id, query) {
+		this.usersFollowing(id, query);
+	}
 }
 
 module.exports = Pixiv;
