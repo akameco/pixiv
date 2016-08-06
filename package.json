@@ -4,7 +4,10 @@
   "description": "pixiv API Client, Support downloading image",
   "main": "index.js",
   "files": [
-    "index.js"
+    "index.js",
+    "auth.js",
+    "app-api.js",
+    "public-api.js"
   ],
   "scripts": {
     "test": "xo && ava"
