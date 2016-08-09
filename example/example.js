@@ -20,7 +20,7 @@ pixiv.works(56099861).then(res => {
 	// => 🌸･ﾟ･:｡(*＞ω＜*)｡:*･ﾟ🌸
 });
 
-pixiv.userWorks(471355).then(res => {
+pixiv.usersWorks(471355).then(res => {
 	res.response.forEach(work => {
 		console.log(work.title);
 	});
@@ -34,3 +34,5 @@ FLASH NOISE
 Birthday Boy 2015
 ...
 */
+
+pixiv.ranking().then(console.log);
