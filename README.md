@@ -61,16 +61,67 @@ Type: `string`
 
 your pixiv password.
 
-### pixiv.users(userId)
-
-Get user info json.
+### `pixiv.works(illustId)`
+### `pixiv.users(userId)`
+### `pixiv.feeds([options])`
+### `pixiv.favoriteWorks([options])`
+### `pixiv.addFavoriteWorks(illustId, [options])`
+### `pixiv.removeFavoriteWorks(illustIds, [options])`
+### `pixiv.followingWorks([options])`
+### `pixiv.following([options])`
+### `pixiv.follow(userId, [options])`
+### `pixiv.unfollow(userIds, [options])`
+### `pixiv.usersWorks(userId, [options])`
+### `pixiv.usersFavoriteWorks(userid, [options])`
+### `pixiv.usersFeeds(userid, [options])`
+### `pixiv.usersFollowing(userid, [options])`
+### `pixiv.ranking(rankingType, [options])`
+### `pixiv.search(searchWord, [options])`
+### `pixiv.latestWorks([options])`
 
 #### userId
-
-*Required*<br>
 Type: `string`, `number`
 
-#### Usage
+#### illustId
+Type: `string`, `number`
+
+#### illustIds
+Type: `Array<number>`
+
+#### searchWord
+Type: `string`<br>
+query word
+
+#### rankingType
+Type: `string`<br>
+Default: `all`<br>
+Values: `all` `illust` `manga` `ugoira`
+
+#### options
+
+##### mode
+
+Type: `string`<br>
+Default: `text`<br>
+Values: `text` `tag` `exact_tag` `caption`
+
+#### page
+
+Type: `string`, `number`<br>
+Default: 1
+
+#### mode
+
+Type: `string`<br>
+Default: `daily`<br>
+Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r18` `weekly_r18` `male_r18` `female_r18` `r18g`
+
+#### page
+
+Type: `number`<br>
+Default: 1
+
+## Usage
 
 ```js
 pixiv.users(471355).then(res => {
@@ -78,7 +129,7 @@ pixiv.users(471355).then(res => {
 });
 ```
 
-```
+```json
 {
   "id": 471355,
   "account": "creayus",
@@ -96,24 +147,13 @@ pixiv.users(471355).then(res => {
 }
 ```
 
-### pixiv.works(illustId)
-
-Get illust info json.
-
-#### illustId
-
-*Required*<br>
-Type: `string`, `number`
-
-#### Usage
-
 ```js
 pixiv.works(56099861).then(res => {
 	console.log(JSON.stringify(res.response[0], null, 2));
 });
 ```
 
-```
+```json
 {
   "id": 56099861,
   "title": "春の到来",
@@ -165,98 +205,11 @@ pixiv.works(56099861).then(res => {
 }
 ```
 
-### pixiv.feeds([options])
-
-
-### pixiv.favoriteWorks([options])
-
-
-### pixiv.following([options])
-
-
-### pixiv.followingWorks([options])
-
-
-### pixiv.usersWorks(userId)
-
-Get user works.
-
-#### userId
-
-*Required*<br>
-Type: `string`, `number`
-
-### pixiv.usersWorks(id, [options])
-
-### pixiv.usersFavoriteWorks(id, [options])
-
-### pixiv.usersFeeds(id, [options])
-
-### pixiv.usersFollowing(id, [options])
-
-### pixiv.latestWorks([options])
-
-### pixiv.search(query, [options])
-
-search pixiv
-
-#### query
-
-query word
-
-*Required*<br>
-Type: `string`
-
-#### options
-
-##### mode
-
-Type: `string`<br>
-Default: `text`<br>
-Values: `text` `tag` `exact_tag` `caption`
-
-#### page
-
-Type: `string`, `number`<br>
-Default: 1
-
-#### Usage
-
 ```js
 pixiv.search('艦これ1000users入り', {mode: 'tag'}).then(res => {
 	console.log(JSON.stringify(res, null, 2));
 });
 ```
-
-
-### pixiv.ranking(type, [options])
-
-Get ranking data.
-
-### type
-
-Type: `string`<br>
-Default: `all`<br>
-Values: `all` `illust` `manga` `ugoira`
-
-
-### options
-
-#### mode
-
-Type: `string`<br>
-Default: `daily`<br>
-Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r18` `weekly_r18` `male_r18` `female_r18` `r18g`
-
-#### page
-
-Type: `string`, `number`<br>
-Default: 1
-
-### pixiv.addFavorite(id, [options])
-
-### pixiv.removeFavorite(ids, [options])
-
 
 ## Tests
 
