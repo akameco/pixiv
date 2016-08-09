@@ -223,16 +223,16 @@ usersFavoriteWorks(id: number, query?: {
 // relation: 'all'
 // show_r18: true
 usersFeeds(id: number, query?: {
-	relation: 'all',
-	show_r18: bool
+	relation?: 'all',
+	show_r18?: bool
 }): Object
 
 // Default
 // page: 1
 // per_page: 30
 usersFollowing(id: number, query?: {
-	page: number,
-	per_page: number
+	page?: number,
+	per_page?: number
 }): Object
 
 // Default
@@ -245,13 +245,13 @@ usersFollowing(id: number, query?: {
 // image_sizes: 'px_128x128,px_480mw,large'
 // profile_image_sizes: 'px_170x170,px_50x50'
 ranking(type: 'all' | 'illust' | 'manga' | 'ugoira', query?: {
-	mode: 'daily' | 'weekly' | 'monthly' | 'male' | 'female' | 'original' | 'rookie' | 'daily_r18' | 'weekly_r18' | 'male_r18'  | 'r18g'
-	page: number,
-	per_page: number,
-	include_stats: bool,
-	include_sanity_level: bool,
-	image_sizes: string,
-	profile_image_sizes: string
+	mode?: 'daily' | 'weekly' | 'monthly' | 'male' | 'female' | 'original' | 'rookie' | 'daily_r18' | 'weekly_r18' | 'male_r18'  | 'r18g'
+	page?: number,
+	per_page?: number,
+	include_stats?: bool,
+	include_sanity_level?: bool,
+	image_sizes?: string,
+	profile_image_sizes?: string
 }): Object
 
 // Default
@@ -265,15 +265,15 @@ ranking(type: 'all' | 'illust' | 'manga' | 'ugoira', query?: {
 // include_stats: true
 // include_sanity_level: true
 search(word: string, query?: {
-	page: number,
-	per_page: number,
-	period: 'all' | 'day' | 'week' | 'month',
-	order: 'desc' | 'asc',
-	sort: 'date',
-	mode: 'text' | 'tag' | 'exact_tag' | 'caption',
-	types: string,
-	include_stats: bool,
-	include_sanity_level: bool,
+	page?: number,
+	per_page?: number,
+	period?: 'all' | 'day' | 'week' | 'month',
+	order?: 'desc' | 'asc',
+	sort?: 'date',
+	mode?: 'text' | 'tag' | 'exact_tag' | 'caption',
+	types?: string,
+	include_stats?: bool,
+	include_sanity_level?: bool,
 }): Object
 
 // Default
@@ -282,10 +282,10 @@ search(word: string, query?: {
 // include_stats: true
 // include_sanity_level: true
 latestWorks(query?: {
-	page: number,
-	per_page: number,
-	include_stats: bool,
-	include_sanity_level: bool
+	page?: number,
+	per_page?: number,
+	include_stats?: bool,
+	include_sanity_level?: bool
 }): Object
 ```
 
