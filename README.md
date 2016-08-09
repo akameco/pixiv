@@ -107,7 +107,7 @@ Values: `all` `illust` `manga` `ugoira`
 works(id: number, query?: {
 	image_sizes?: string,
 	include_stats?: bool
-}): Object
+}): Promise<Object>
 
 // Default
 // image_sizes: 'px_128x128,px_480mw,small,medium,large'
@@ -121,7 +121,7 @@ users(id: number, query?: {
 	include_profile?: bool,
 	include_workspace?: bool,
 	include_contacts?: bool
-}): Object
+}): Promise<Object>
 
 // Default
 // relation: 'all'
@@ -129,7 +129,7 @@ users(id: number, query?: {
 feed(query?: {
 	relation: 'all'
 	show_r18: bool
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -147,13 +147,13 @@ favoriteWorks(query?: {
 // publicity: 'public'
 addFavoriteWorks(id: number, query?: {
 	publicity?: 'public' | 'private'
-}): Object
+}): Promise<Object>
 
 // Default
 // publicity: 'public'
 removeFavoriteWorks(ids: Array<number>, query?: {
 	publicity?: 'public' | 'private'
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -167,7 +167,7 @@ followingWorks(query?: {
 	image_sizes?: string,
 	include_stats?: bool,
 	include_sanity_level?: bool
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1,
@@ -177,19 +177,19 @@ following(query?: {
 	page?: number,
 	per_page?: number,
 	publicity?: 'public' | 'private'
-}): Object
+}): Promise<Object>
 
 // Default
 // publicity: 'public'
 follow(query?: {
 	publicity?: 'public' | 'private'
-}): Object
+}): Promise<Object>
 
 // Default
 // publicity: 'public'
 unfollow(ids: Array<number>, query?: {
 	publicity?: 'public' | 'private'
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -203,7 +203,7 @@ usersWorks(id: number, query?: {
 	include_stats?: bool,
 	include_sanity_level?: bool,
 	image_sizes?: string
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -217,7 +217,7 @@ usersFavoriteWorks(id: number, query?: {
 	include_stats?: bool,
 	include_sanity_level?: bool,
 	image_sizes?: string
-}): Object
+}): Promise<Object>
 
 // Default
 // relation: 'all'
@@ -225,7 +225,7 @@ usersFavoriteWorks(id: number, query?: {
 usersFeeds(id: number, query?: {
 	relation?: 'all',
 	show_r18?: bool
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -233,7 +233,7 @@ usersFeeds(id: number, query?: {
 usersFollowing(id: number, query?: {
 	page?: number,
 	per_page?: number
-}): Object
+}): Promise<Object>
 
 // Default
 // type: 'all'
@@ -252,7 +252,7 @@ ranking(type: 'all' | 'illust' | 'manga' | 'ugoira', query?: {
 	include_sanity_level?: bool,
 	image_sizes?: string,
 	profile_image_sizes?: string
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -274,7 +274,7 @@ search(word: string, query?: {
 	types?: string,
 	include_stats?: bool,
 	include_sanity_level?: bool,
-}): Object
+}): Promise<Object>
 
 // Default
 // page: 1
@@ -286,7 +286,7 @@ latestWorks(query?: {
 	per_page?: number,
 	include_stats?: bool,
 	include_sanity_level?: bool
-}): Object
+}): Promise<Object>
 ```
 
 ## Usage
