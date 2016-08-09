@@ -97,29 +97,197 @@ Type: `string`<br>
 Default: `all`<br>
 Values: `all` `illust` `manga` `ugoira`
 
-#### options
 
-##### mode
+## API Types
 
-Type: `string`<br>
-Default: `text`<br>
-Values: `text` `tag` `exact_tag` `caption`
+```js
+// Default
+// image_sizes: 'px_128x128,px_480mw,small,medium,large'
+// include_stats: true
+works(id: number, query?: {
+	image_sizes?: string,
+	include_stats?: bool
+}): Object
 
-#### page
+// Default
+// image_sizes: 'px_128x128,px_480mw,small,medium,large'
+// include_stats: true
+// include_profile: true
+// include_workspace: true
+// include_contact: true
+users(id: number, query?: {
+	image_sizes?: string
+	include_stats?: bool,
+	include_profile?: bool,
+	include_workspace?: bool,
+	include_contacts?: bool
+}): Object
 
-Type: `string`, `number`<br>
-Default: 1
+// Default
+// relation: 'all'
+// show_r18: true
+feed(query?: {
+	relation: 'all'
+	show_r18: bool
+}): Object
 
-#### mode
+// Default
+// page: 1
+// per_page: 50
+// publicity: 'public'
+// image_sizes: 'px_128x128,px_480mw,large'
+favoriteWorks(query?: {
+	page?: number,
+	per_page?: number,
+	publicity?: 'public' | 'private'
+	image_sizes?: string
+}): Object
 
-Type: `string`<br>
-Default: `daily`<br>
-Values: `daily` `weekly` `monthly` `rookie` `original` `male` `female` `daily_r18` `weekly_r18` `male_r18` `female_r18` `r18g`
+// Default
+// publicity: 'public'
+addFavoriteWorks(id: number, query?: {
+	publicity?: 'public' | 'private'
+}): Object
 
-#### page
+// Default
+// publicity: 'public'
+removeFavoriteWorks(ids: Array<number>, query?: {
+	publicity?: 'public' | 'private'
+}): Object
 
-Type: `number`<br>
-Default: 1
+// Default
+// page: 1
+// per_page: 30
+// image_sizes: 'px_128x128,px_480mw,large'
+// include_stats: true,
+// include_sanity_level: true
+followingWorks(query?: {
+	page?: number,
+	per_page?: number,
+	image_sizes?: string,
+	include_stats?: bool,
+	include_sanity_level?: bool
+}): Object
+
+// Default
+// page: 1,
+// per_page: 30,
+// publicity: 'public'
+following(query?: {
+	page?: number,
+	per_page?: number,
+	publicity?: 'public' | 'private'
+}): Object
+
+// Default
+// publicity: 'public'
+follow(query?: {
+	publicity?: 'public' | 'private'
+}): Object
+
+// Default
+// publicity: 'public'
+unfollow(ids: Array<number>, query?: {
+	publicity?: 'public' | 'private'
+}): Object
+
+// Default
+// page: 1
+// per_page: 30
+// include_stats: true,
+// include_sanity_level: true
+// image_sizes: 'px_128x128,px_480mw,large'
+usersWorks(id: number, query?: {
+	page?: number,
+	per_page?: number,
+	include_stats?: bool,
+	include_sanity_level?: bool,
+	image_sizes?: string
+}): Object
+
+// Default
+// page: 1
+// per_page: 30
+// include_stats: true,
+// include_sanity_level: true
+// image_sizes: 'px_128x128,px_480mw,large'
+usersFavoriteWorks(id: number, query?: {
+	page?: number,
+	per_page?: number,
+	include_stats?: bool,
+	include_sanity_level?: bool,
+	image_sizes?: string
+}): Object
+
+// Default
+// relation: 'all'
+// show_r18: true
+usersFeeds(id: number, query?: {
+	relation: 'all',
+	show_r18: bool
+}): Object
+
+// Default
+// page: 1
+// per_page: 30
+usersFollowing(id: number, query?: {
+	page: number,
+	per_page: number
+}): Object
+
+// Default
+// type: 'all'
+// mode: 'daily'
+// page: 1
+// per_page: 50
+// include_stats: true
+// include_sanity_level: true
+// image_sizes: 'px_128x128,px_480mw,large'
+// profile_image_sizes: 'px_170x170,px_50x50'
+ranking(type: 'all' | 'illust' | 'manga' | 'ugoira', query?: {
+	mode: 'daily' | 'weekly' | 'monthly' | 'male' | 'female' | 'original' | 'rookie' | 'daily_r18' | 'weekly_r18' | 'male_r18'  | 'r18g'
+	page: number,
+	per_page: number,
+	include_stats: bool,
+	include_sanity_level: bool,
+	image_sizes: string,
+	profile_image_sizes: string
+}): Object
+
+// Default
+// page: 1
+// per_page: 30
+// period: 'all'
+// order: 'desc'
+// sort: 'date'
+// mode: 'text'
+// types: 'illustration,manga,ugoira'
+// include_stats: true
+// include_sanity_level: true
+search(word: string, query?: {
+	page: number,
+	per_page: number,
+	period: 'all' | 'day' | 'week' | 'month',
+	order: 'desc' | 'asc',
+	sort: 'date',
+	mode: 'text' | 'tag' | 'exact_tag' | 'caption',
+	types: string,
+	include_stats: bool,
+	include_sanity_level: bool,
+}): Object
+
+// Default
+// page: 1
+// per_page: 30
+// include_stats: true
+// include_sanity_level: true
+latestWorks(query?: {
+	page: number,
+	per_page: number,
+	include_stats: bool,
+	include_sanity_level: bool
+}): Object
+```
 
 ## Usage
 
@@ -232,3 +400,4 @@ $ npm test
 ## License
 
 MIT
+IT
