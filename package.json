@@ -1,7 +1,7 @@
 {
   "name": "pixiv.js",
   "version": "0.17.1",
-  "description": "pixiv API Client, Support downloading image",
+  "description": "pixiv API Client, Support public-api && app-api",
   "main": "index.js",
   "files": [
     "index.js",
