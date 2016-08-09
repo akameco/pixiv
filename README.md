@@ -2,6 +2,8 @@
 
 > pixiv API client
 
+Support Public API & App API.
+
 ## Install
 
 ```
@@ -44,6 +46,8 @@ pixiv.search('艦これ10000users入り', {mode: 'tag'})
 See examples.
 
 ## API
+
+*public api*
 
 ### Pixiv(username, password)
 
@@ -97,6 +101,22 @@ Type: `string`<br>
 Default: `all`<br>
 Values: `all` `illust` `manga` `ugoira`
 
+
+*app api*
+
+### `Pixiv.PixivApp(username, password)`
+
+#### `pixivApp.userDetail(id, query)`
+#### `pixivApp.userIllusts(id, query)`
+#### `pixivApp.userBookmarksIllust(id, query)`
+#### `pixivApp.illustFollow(query)`
+#### `pixivApp.illustComments(id, query)`
+#### `pixivApp.illustRelated(id, query)`
+#### `pixivApp.illustRecommended(query)`
+#### `pixivApp.illustRanking([query])`
+#### `pixivApp.searchIllust(word, [query])`
+#### `pixivApp.trendingTagsIllust([query])`
+#### `pixivApp.next(nextUrl)`
 
 ## API Types
 
@@ -291,6 +311,8 @@ latestWorks(query?: {
 
 ## Usage
 
+### users
+
 ```js
 pixiv.users(471355).then(res => {
 	console.log(JSON.stringify(res.response[0], null, 2));
@@ -314,6 +336,8 @@ pixiv.users(471355).then(res => {
   "profile": null
 }
 ```
+
+### works
 
 ```js
 pixiv.works(56099861).then(res => {
@@ -373,11 +397,39 @@ pixiv.works(56099861).then(res => {
 }
 ```
 
+
+### search
+
 ```js
 pixiv.search('艦これ1000users入り', {mode: 'tag'}).then(res => {
 	console.log(JSON.stringify(res, null, 2));
 });
 ```
+
+### App API example
+
+```js
+const {PixivApp} = require('../');
+
+const pixivApp = new PixivApp(username, password);
+
+pixivApp.searchIllust('艦これ10000users入り').then(res => {
+	next(res.next_url);
+});
+
+function next(url) {
+	pixivApp.next(url).then(res => {
+		console.log(res);
+		if (res.next_url) {
+			next(res.next_url);
+		} else {
+			console.log('end');
+		}
+	});
+}
+```
+
+See more [examples](https://github.com/akameco/pixiv/tree/master/example)
 
 ## Tests
 
