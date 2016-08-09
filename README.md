@@ -106,17 +106,17 @@ Values: `all` `illust` `manga` `ugoira`
 
 ### `Pixiv.PixivApp(username, password)`
 
-#### `pixivApp.userDetail(id, query)`
-#### `pixivApp.userIllusts(id, query)`
-#### `pixivApp.userBookmarksIllust(id, query)`
-#### `pixivApp.illustFollow(query)`
-#### `pixivApp.illustComments(id, query)`
-#### `pixivApp.illustRelated(id, query)`
-#### `pixivApp.illustRecommended(query)`
-#### `pixivApp.illustRanking([query])`
-#### `pixivApp.searchIllust(word, [query])`
-#### `pixivApp.trendingTagsIllust([query])`
-#### `pixivApp.next(nextUrl)`
+### `pixivApp.userDetail(id, query)`
+### `pixivApp.userIllusts(id, query)`
+### `pixivApp.userBookmarksIllust(id, query)`
+### `pixivApp.illustFollow(query)`
+### `pixivApp.illustComments(id, query)`
+### `pixivApp.illustRelated(id, query)`
+### `pixivApp.illustRecommended(query)`
+### `pixivApp.illustRanking([query])`
+### `pixivApp.searchIllust(word, [query])`
+### `pixivApp.trendingTagsIllust([query])`
+### `pixivApp.next(nextUrl)`
 
 ## API Types
 
