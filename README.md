@@ -400,4 +400,3 @@ $ npm test
 ## License
 
 MIT
-IT
