@@ -8,11 +8,10 @@ class PixivApp {
 		this.auth = new Auth(username, password);
 	}
 
-	authGot(path, query, opts) {
+	got(path, query, opts) {
 		opts = opts || {};
 		const v = opts.v || 'v1';
-		const method = opts.method || 'get';
-		return this.auth.authGot(`https://app-api.pixiv.net/${v}/`, path, query, method);
+		return this.auth.authGot(`https://app-api.pixiv.net/${v}/`, path, query, opts.method);
 	}
 
 	next(nextUrl) {
@@ -24,7 +23,7 @@ class PixivApp {
 			user_id: id,
 			filter
 		}, query);
-		return this.authGot('user/detail', query);
+		return this.got('user/detail', query);
 	}
 
 	userIllusts(id, query) {
@@ -33,7 +32,7 @@ class PixivApp {
 			type: 'illust',
 			filter
 		});
-		return this.authGot('user/illusts', query);
+		return this.got('user/illusts', query);
 	}
 
 	userBookmarksIllust(id, query) {
@@ -42,14 +41,14 @@ class PixivApp {
 			restrict: 'public',
 			filter
 		}, query);
-		return this.authGot('user/bookmarks/illust', query);
+		return this.got('user/bookmarks/illust', query);
 	}
 
 	illustFollow(query) {
 		query = Object.assign({
 			restrict: 'public'
 		}, query);
-		return this.authGot('illust/follow', query, {v: 'v2'});
+		return this.got('illust/follow', query, {v: 'v2'});
 	}
 
 	illustComments(id, query) {
@@ -57,7 +56,7 @@ class PixivApp {
 			illust_id: id,
 			include_total_comments: 'true'
 		}, query);
-		return this.authGot('illust/comments', query);
+		return this.got('illust/comments', query);
 	}
 
 	illustRelated(id, query) {
@@ -65,7 +64,7 @@ class PixivApp {
 			illust_id: id,
 			filter
 		}, query);
-		return this.authGot('illust/related', query);
+		return this.got('illust/related', query);
 	}
 
 	illustRecommended(query) {
@@ -74,7 +73,7 @@ class PixivApp {
 			include_ranking_label: 'true',
 			filter
 		}, query);
-		return this.authGot('illust/recommended', query);
+		return this.got('illust/recommended', query);
 	}
 
 	illustRanking(query) {
@@ -82,7 +81,7 @@ class PixivApp {
 			mode: 'day',
 			filter
 		}, query);
-		return this.authGot('illust/ranking', query);
+		return this.got('illust/ranking', query);
 	}
 
 	searchIllust(word, query) {
@@ -92,14 +91,14 @@ class PixivApp {
 			sort: 'date_desc',
 			filter
 		}, query);
-		return this.authGot('search/illust', query);
+		return this.got('search/illust', query);
 	}
 
 	trendingTagsIllust(query) {
 		query = Object.assign({
 			filter
 		}, query);
-		return this.authGot(`trending-tags/illust`, query);
+		return this.got(`trending-tags/illust`, query);
 	}
 }
 

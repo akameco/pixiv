@@ -9,7 +9,7 @@ class Pixiv {
 		this.auth = new Auth(username, password);
 	}
 
-	authGot(path, query, opts) {
+	got(path, query, opts) {
 		return this.auth.authGot('https://public-api.secure.pixiv.net/v1/', path, query, opts);
 	}
 
@@ -18,7 +18,7 @@ class Pixiv {
 			image_sizes,
 			include_stats: true
 		}, query);
-		return this.authGot(`works/${id}`, query);
+		return this.got(`works/${id}`, query);
 	}
 
 	users(id, query) {
@@ -30,7 +30,7 @@ class Pixiv {
 			include_workspace: 1,
 			include_contacts: 1
 		}, query);
-		return this.authGot(`users/${id}`, query);
+		return this.got(`users/${id}`, query);
 	}
 
 	feeds(query) {
@@ -39,7 +39,7 @@ class Pixiv {
 			type: 'touch_nottext',
 			show_r18: 1
 		}, query);
-		return this.authGot('me/feeds', query);
+		return this.got('me/feeds', query);
 	}
 
 	favoriteWorks(query) {
@@ -49,7 +49,7 @@ class Pixiv {
 			publicity: 'public',
 			image_sizes: 'px_128x128,px_480mw,large'
 		}, query);
-		return this.authGot('me/favorite_works', query);
+		return this.got('me/favorite_works', query);
 	}
 
 	addFavoriteWorks(id, query) {
@@ -57,7 +57,7 @@ class Pixiv {
 			work_id: id,
 			publicity: 'public'
 		}, query);
-		return this.authGot('me/favorite_works', query, 'post');
+		return this.got('me/favorite_works', query, 'post');
 	}
 
 	removeFavorite(ids, query) {
@@ -65,7 +65,7 @@ class Pixiv {
 			ids: ids.join(','),
 			publicity: 'public'
 		}, query);
-		return this.authGot('me/favorite_works', query, 'delete');
+		return this.got('me/favorite_works', query, 'delete');
 	}
 
 	followingWorks(query) {
@@ -76,7 +76,7 @@ class Pixiv {
 			include_stats: true,
 			include_sanity_level: true
 		}, query);
-		return this.authGot('me/following/works', query);
+		return this.got('me/following/works', query);
 	}
 
 	following(query) {
@@ -85,7 +85,7 @@ class Pixiv {
 			per_page: 30,
 			publicity: 'public'
 		}, query);
-		return this.authGot('me/following', query);
+		return this.got('me/following', query);
 	}
 
 	follow(id, query) {
@@ -93,7 +93,7 @@ class Pixiv {
 			target_user_id: id,
 			publicity: 'public'
 		}, query);
-		return this.authGot('me/favorite-users', query, 'post');
+		return this.got('me/favorite-users', query, 'post');
 	}
 
 	unfollow(ids, query) {
@@ -101,7 +101,7 @@ class Pixiv {
 			delete_ids: ids.join(','),
 			publicity: 'public'
 		}, query);
-		return this.authGot('me/favorite-users', query, 'delete');
+		return this.got('me/favorite-users', query, 'delete');
 	}
 
 	usersWorks(id, query) {
@@ -112,7 +112,7 @@ class Pixiv {
 			include_sanity_level: true,
 			image_sizes: 'px_128x128,px_480mw,large'
 		}, query);
-		return this.authGot(`users/${id}/works`, query);
+		return this.got(`users/${id}/works`, query);
 	}
 
 	usersFavoriteWorks(id, query) {
@@ -123,7 +123,7 @@ class Pixiv {
 			include_sanity_level: true,
 			image_sizes: 'px_128x128,px_480mw,large'
 		}, query);
-		return this.authGot(`users/${id}/favorite_works`, query);
+		return this.got(`users/${id}/favorite_works`, query);
 	}
 
 	usersFeeds(id, query) {
@@ -132,7 +132,7 @@ class Pixiv {
 			type: 'touch_nottext',
 			show_r18: true
 		}, query);
-		return this.authGot(`users/${id}/feeds`, query);
+		return this.got(`users/${id}/feeds`, query);
 	}
 
 	usersFollowing(id, query) {
@@ -140,7 +140,7 @@ class Pixiv {
 			page: 1,
 			per_page: 30
 		}, query);
-		return this.authGot(`users/${id}/following`, query);
+		return this.got(`users/${id}/following`, query);
 	}
 
 	ranking(type, query) {
@@ -154,7 +154,7 @@ class Pixiv {
 			image_sizes: 'px_128x128,px_480mw,large',
 			profile_image_sizes
 		}, query);
-		return this.authGot(`ranking/${type}`, query);
+		return this.got(`ranking/${type}`, query);
 	}
 
 	search(q, query) {
@@ -174,7 +174,7 @@ class Pixiv {
 			include_sanity_level: true,
 			image_sizes: 'px_128x128,px_480mw,large'
 		}, query);
-		return this.authGot('search/works', query);
+		return this.got('search/works', query);
 	}
 
 	latestWorks(query) {
@@ -186,7 +186,7 @@ class Pixiv {
 			image_sizes: 'px_128x128,px_480mw,large',
 			profile_image_sizes
 		}, query);
-		return this.authGot('works', query);
+		return this.got('works', query);
 	}
 
 	// old api
