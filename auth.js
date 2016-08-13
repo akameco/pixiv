@@ -29,29 +29,20 @@ class Auth {
 		});
 	}
 
-	authRequest(target) {
+	authRequest(target, opts) {
 		return this._auth().then(() => {
-			const opts = {
+			opts = Object.assign({}, {
 				headers: this.headers,
 				json: true
-			};
+			}, opts);
 
 			return got(target, opts);
 		}).then(res => res.body);
 	}
 
 	authGot(apiUrl, path, query, method) {
-		method = method || 'get';
-		return this._auth().then(() => {
-			const opts = Object.assign({
-				headers: this.headers,
-				json: true
-			}, {query});
-
-			const reqestURL = url.resolve(apiUrl, path);
-			return got[method](reqestURL, opts);
-		})
-		.then(res => res.body);
+		const reqestURL = url.resolve(apiUrl, path);
+		return this.authRequest(reqestURL, Object.assign({}, {query}, method));
 	}
 }
 
