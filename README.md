@@ -4,6 +4,8 @@
 
 Support Public API & App API.
 
+**This module is deprecated, use [pixiv-app-api](https://github.com/akameco/pixiv-app-api).**
+
 ## Install
 
 ```
