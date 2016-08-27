@@ -1,16 +1,20 @@
 'use strict';
-const Auth = require('./auth');
+const url = require('url');
+const PixivAuthGot = require('pixiv-auth-got');
 
+const ENDPOINT = 'https://public-api.secure.pixiv.net/v1/';
 const profile_image_sizes = 'px_170x170,px_50x50';
 const image_sizes = 'px_128x128,px_480mw,small,medium,large';
 
 class Pixiv {
 	constructor(username, password) {
-		this.auth = new Auth(username, password);
+		this.pixivAuthGot = new PixivAuthGot(username, password);
 	}
 
 	got(path, query, opts) {
-		return this.auth.authGot('https://public-api.secure.pixiv.net/v1/', path, query, opts);
+		const apiUrl = /https/.test(path) ? path : url.resolve(ENDPOINT, path);
+		return this.pixivAuthGot.got(apiUrl, Object.assign({query}, opts))
+			.then(res => res.body);
 	}
 
 	works(id, query) {

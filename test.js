@@ -1,5 +1,7 @@
 import test from 'ava';
-import Pixiv from '../';
+import Pixiv from './';
+
+const userId = 471355;
 
 test.beforeEach('new Pixiv()', t => {
 	const username = process.env.USERNAME;
@@ -12,8 +14,8 @@ test('expose a constructor', async t => {
 });
 
 test('works', async t => {
-	const json = await t.context.pixiv.works(56131089);
-	t.is(json.response[0].title, 'test');
+	const json = await t.context.pixiv.works(2958);
+	t.is(typeof json, 'object');
 });
 
 test('error pixiv.work has empty arguments', async t => {
@@ -26,8 +28,8 @@ test('error pixiv.work has empty arguments', async t => {
 });
 
 test('users', async t => {
-	const json = await t.context.pixiv.users(7076552);
-	t.is(json.response[0].account, 'akameco');
+	const json = await t.context.pixiv.users(userId);
+	t.true(typeof json.response[0] === 'object');
 });
 
 test('error pixiv.user has empty arguments', async t => {
@@ -40,8 +42,8 @@ test('error pixiv.user has empty arguments', async t => {
 });
 
 test('userWorks', async t => {
-	const json = await t.context.pixiv.usersWorks(7076552);
-	t.true(typeof json === 'object');
+	const json = await t.context.pixiv.usersWorks(userId);
+	t.is(typeof json, 'object');
 });
 
 test('error pixiv.userWorks has empty arguments', async t => {
@@ -101,12 +103,12 @@ test('favoriteWorks', async t => {
 });
 
 test('userFollowing', async t => {
-	const json = await t.context.pixiv.usersFollowing(7076552);
+	const json = await t.context.pixiv.usersFollowing(userId);
 	t.true(Array.isArray(json.response));
 });
 
 test('uerFeeds', async t => {
-	const json = await t.context.pixiv.usersFeeds(7076552);
+	const json = await t.context.pixiv.usersFeeds(userId);
 	t.true(Array.isArray(json.response));
 });
 
@@ -121,7 +123,7 @@ test('following', async t => {
 });
 
 test('userFovariteWorks', async t => {
-	const json = await t.context.pixiv.usersFavoriteWorks(7076552);
+	const json = await t.context.pixiv.usersFavoriteWorks(userId);
 	t.true(Array.isArray(json.response));
 });
 
