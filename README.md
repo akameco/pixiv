@@ -106,7 +106,7 @@ Values: `all` `illust` `manga` `ugoira`
 
 ## *app api*
 
-### `Pixiv.App
+### Pixiv.App
 
 Return `pixiv-app-api`.
 See [akameco/pixiv-app-api: Promise base pixiv API client](https://github.com/akameco/pixiv-app-api).
