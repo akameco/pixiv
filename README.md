@@ -2,7 +2,7 @@
 
 > pixiv API client
 
-Support Public API & App API.
+Support Public API.
 
 **This module is deprecated, use [pixiv-app-api](https://github.com/akameco/pixiv-app-api).**
 
@@ -103,15 +103,6 @@ Type: `string`<br>
 Default: `all`<br>
 Values: `all` `illust` `manga` `ugoira`
 
-
-## *app api*
-
-### Pixiv.App
-
-Return `pixiv-app-api`.
-See [akameco/pixiv-app-api: Promise base pixiv API client](https://github.com/akameco/pixiv-app-api).
-
-
 ## Usage
 
 ### users
@@ -209,31 +200,6 @@ pixiv.search('艦これ1000users入り', {mode: 'tag'}).then(res => {
 });
 ```
 
-### App API example
-
-```js
-const {PixivApp} = require('../');
-
-const pixivApp = new PixivApp(username, password);
-
-pixivApp.searchIllust('艦これ10000users入り').then(res => {
-	next(res.next_url);
-});
-
-function next(url) {
-	pixivApp.next(url).then(res => {
-		console.log(res);
-		if (res.next_url) {
-			next(res.next_url);
-		} else {
-			console.log('end');
-		}
-	});
-}
-```
-
-See more [examples](https://github.com/akameco/pixiv/tree/master/example)
-
 ## Tests
 
 Export your pixiv username & password before running Tests.
@@ -250,7 +216,9 @@ $ npm test
 
 ## Related
 
+- [pixiv-app-api](https://github.com/akameco/pixiv-app-api) - save the image of pixiv
 - [pixiv-img](https://github.com/akameco/pixiv-img) - save the image of pixiv
+- [PixivDeck](https://github.com/akameco/PixivDeck) - pixiv client for Desktop like TweetDeck
 
 ## License
 
