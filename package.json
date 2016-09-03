@@ -38,7 +38,7 @@
   "homepage": "https://github.com/akameco/pixiv.js#readme",
   "dependencies": {
     "got": "^6.2.0",
-    "pixiv-app-api": "^0.1.1",
+    "pixiv-app-api": "^0.2.0",
     "pixiv-auth-got": "^0.1.0"
   },
   "devDependencies": {
