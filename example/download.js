@@ -1,5 +1,5 @@
 'use strict';
-const pixivImg = require('pixiv-img');
+const pixivImg = require('pixiv-img'); // eslint-disable-line import/no-unresolved
 const Pixiv = require('../');
 
 const username = process.env.USERNAME;
