@@ -38,7 +38,7 @@
     "pixiv-auth-got": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
+    "ava": "^0.18.2",
     "xo": "^0.17.0"
   },
   "xo": {
