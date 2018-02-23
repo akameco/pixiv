@@ -1,5 +1,7 @@
 # pixiv.js [![Build Status](https://travis-ci.org/akameco/pixiv.svg?branch=master)](https://travis-ci.org/akameco/pixiv)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/akameco/pixiv.svg)](https://greenkeeper.io/)
+
 > pixiv API client
 
 Support Public API.

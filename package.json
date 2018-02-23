@@ -34,12 +34,12 @@
   },
   "homepage": "https://github.com/akameco/pixiv.js#readme",
   "dependencies": {
-    "got": "^6.5.0",
+    "got": "^8.2.0",
     "pixiv-auth-got": "^0.2.0"
   },
   "devDependencies": {
-    "ava": "^0.17.0",
-    "xo": "^0.17.0"
+    "ava": "^0.25.0",
+    "xo": "^0.20.3"
   },
   "xo": {
     "esnext": true,
